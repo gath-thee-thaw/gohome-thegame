@@ -6,22 +6,20 @@
 script/source = "extends KinematicBody2D
 
 
-var velocity = Vector2(0, 0)
+
+
+var playerFlip
 var speed = 1000
-var mousePos
-var playerDirection
-var playerSpeed
-var dir
 
-func _ready():
-	mousePos = get_global_mouse_position()
-	dir = mousePos - position
-	dir = dir.normalized()
-	
 
+var obj
 func _process(delta):
-	#position += playerDirection * playerSpeed + transform.x * speed * delta
-	var obj = move_and_collide((playerDirection * playerSpeed + dir * speed) * delta)
+	#position += playerDirection * playerSpeed + transform.x * speed * delta //playerDirection * playerSpeed + 
+	if !playerFlip:
+		obj = move_and_collide((transform.x * speed) * delta)
+	else:
+		obj = move_and_collide((-transform.x * speed) * delta)
+	
 	if(obj):
 		if obj.collider.is_in_group(\"enemy\"):
 			obj.collider.queue_free()

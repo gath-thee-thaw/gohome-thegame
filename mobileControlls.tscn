@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://ma4sx.png" type="Texture" id=1]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="ShootButton" type="TouchScreenButton" parent="."]
+position = Vector2( 867, 446 )
+scale = Vector2( 0.4375, 0.4375 )
+normal = ExtResource( 1 )
+action = "shoot"
