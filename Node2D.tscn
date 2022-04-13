@@ -45,7 +45,7 @@ texture = ExtResource( 1 )
 [node name="spawnPoint" type="Node2D" parent="Player/rifle"]
 position = Vector2( 65, 0 )
 
-[node name="enemy" type="KinematicBody2D" parent="."]
+[node name="enemy" type="KinematicBody2D" parent="." groups=["enemy"]]
 position = Vector2( 264, 168 )
 script = ExtResource( 3 )
 
