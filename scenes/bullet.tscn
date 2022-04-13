@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=6]
+script/source = "extends KinematicBody2D
+
+
+var velocity = Vector2(0, 0)
+var speed = 500
+var mousePos
+var playerDirection
+var playerSpeed
+var dir
+
+func _ready():
+	mousePos = get_global_mouse_position()
+	dir = mousePos - position
+	dir = dir.normalized()
+	
+
+func _process(delta):
+	#position += playerDirection * playerSpeed + transform.x * speed * delta
+	move_and_collide((playerDirection * playerSpeed + dir * speed)* delta) 
+
+ 
+"
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 6, 3 )
+
+[node name="bullet" type="KinematicBody2D"]
+script = SubResource( 6 )
+
+[node name="Icon" type="Sprite" parent="."]
+scale = Vector2( 0.2, 0.1 )
+texture = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 5 )
