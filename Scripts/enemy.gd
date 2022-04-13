@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Area2D
 
 
 var destination = Vector2()
@@ -25,16 +25,20 @@ func _process(delta):
 	
 	if direction.length() > 1.0:
 		direction = direction.normalized()
-	move_and_slide(speed * direction)
+	position += direction * delta * speed
 	
 	var distamce = position.distance_to(destination)
 	if distamce <= stopingDistance:
 		setDestination()
 	
-	for index in get_slide_count():
-		var collision = get_slide_collision(index)
-		setDestination()
+	
 
 func setDestination():
 	destination.x = rand_range(minX, maxX)
 	destination.y = rand_range(minY, maxY)
+
+
+
+
+func _on_enemy1_body_entered(body):
+	setDestination()

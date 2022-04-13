@@ -1,26 +1,16 @@
 extends Node2D
 
 
-var bullet = load("res://scenes/bullet.tscn")
+var bullet = load("res://scenes/bullet2.tscn")
 var mobile = false
 
-var timer
-var shootDelay = 5
-var canShootB = true
 
-func _ready():
-	pass
-#	timer = Timer.new()
-#	timer.one_shot = true
-#	timer.wait_time = shootDelay
-#	timer.connect("timeout", self, "on_timeout_complete")
-	
 	
 
 func _process(delta):
 	if(!mobile):
 #		look_at(get_global_mouse_position())
-		if Input.is_action_pressed("shoot"):
+		if Input.is_action_just_pressed("shoot"):
 			Shoot()
 		
 #

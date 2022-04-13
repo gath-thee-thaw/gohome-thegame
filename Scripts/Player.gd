@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Area2D
 
 
 export var speed := 500
@@ -8,10 +8,15 @@ var _velocity := Vector2.ZERO
 var flip
 var direction
 
-var bullet = load("res://scenes/bullet.tscn")
-var mobile = true
+var bullet = load("res://scenes/bullet2.tscn")
+var mobile = false
 
-func _physics_process(_delta: float) -> void:
+var screen_size
+
+func _ready():
+	screen_size = get_viewport_rect().size
+
+func _physics_process(delta: float):
 	
 	#Get inputs
 	if(!mobile):
@@ -36,7 +41,9 @@ func _physics_process(_delta: float) -> void:
 	#move
 	if direction.length() > 1.0:
 		direction = direction.normalized()
-	move_and_slide(speed * direction)
+	position += direction * delta * speed
+	position.x = clamp(position.x, 60, screen_size.x-60)
+	position.y = clamp(position.y, 0, screen_size.y-60)
 	
 	
 #	
