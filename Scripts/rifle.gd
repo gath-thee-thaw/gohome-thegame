@@ -25,7 +25,7 @@ func Shoot():
 		bul.playerFlip = get_parent().flip
 
 		
-		#timer.start()
+		
 		
 	   
 		

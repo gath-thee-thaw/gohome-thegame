@@ -4,20 +4,71 @@ onready var player = get_parent().find_node("Player")
 var kSpeed = 200
 var speed = 1000
 var stopingDistance = 50
+var canFollow = true
+var flip
 
 func _process(delta):
-	var direction = Vector2(
-		player.position.x - position.x,
-		player.position.y - position.y
-	)
 	
+	
+	var direction = Vector2(
+	player.position - position)
+
 	if direction.length() > 1.0:
 		direction = direction.normalized()
 	position += direction * speed * delta
-	
 	
 	var distamce = position.distance_to(player.position)
 	if distamce <= stopingDistance:
 		speed = 0
 	else:
 		speed = kSpeed
+	   
+	if(player.position.x > position.x):
+		if(flip):
+			apply_scale(Vector2(-1,1))
+			flip = false
+	if(player.position.x < position.x):
+		if(!flip):
+			apply_scale(Vector2(-1,1))
+			flip = true
+		
+	   
+		
+	
+		
+		
+		
+		
+	
+	
+	
+	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	
+
+
+func _on_enemy2_area_entered(area):
+	if area.is_in_group("Player"):
+		canFollow = false
+
+
+func _on_enemy2_area_exited(area):
+	if area.is_in_group("Player"):
+		canFollow = true

@@ -11,6 +11,8 @@ var minY = 23
 export var speed := 300
 var stopingDistance = 5
 
+var flip
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	setDestination()
@@ -31,7 +33,14 @@ func _process(delta):
 	if distamce <= stopingDistance:
 		setDestination()
 	
-	
+	if(destination.x > position.x):
+		if(flip):
+			apply_scale(Vector2(-1,1))
+			flip = false
+	if(destination.x < position.x):
+		if(!flip):
+			apply_scale(Vector2(-1,1))
+			flip = true
 
 func setDestination():
 	destination.x = rand_range(minX, maxX)
