@@ -1,0 +1,245 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://scenes/joystick.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assests/Player/player-body_1.png" type="Texture" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Scripts/Player.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/rifle.gd" type="Script" id=5]
+[ext_resource path="res://Assests/Player/player-body_2.png" type="Texture" id=6]
+[ext_resource path="res://Assests/Player/player-hand_1.png" type="Texture" id=7]
+[ext_resource path="res://Assests/Player/player-hand_2.png" type="Texture" id=8]
+[ext_resource path="res://Assests/particles-walk.png" type="Texture" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 31, 47.5 )
+
+[sub_resource type="Animation" id=4]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/Body:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/Hands:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites/Body:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/Hands:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/4/type = "bezier"
+tracks/4/path = NodePath("Sprites:position:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/5/type = "bezier"
+tracks/5/path = NodePath("Sprites:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Sprites:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -0.16503 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Run"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/Body:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites/Hands:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "bezier"
+tracks/2/path = NodePath("Sprites:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/3/type = "bezier"
+tracks/3/path = NodePath("Sprites:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0, -8.83333, 0, 0, -8.83333, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.6 )
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 0.25, 1 ),
+"update": 0,
+"values": [ 0.0, 8.0, 0.0 ]
+}
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+} ]
+
+[sub_resource type="Curve" id=7]
+_data = [ Vector2( 0, 0.405682 ), 0.0, 0.0, 0, 0, Vector2( 0.348039, 0.760227 ), 0.0, 0.0, 0, 0, Vector2( 0.70098, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=6]
+offsets = PoolRealArray( 0, 0.0110497, 0.154696, 0.977901, 1 )
+colors = PoolColorArray( 1, 1, 1, 0.713376, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.558011, 1, 1, 1, 0 )
+
+[node name="Player" type="Area2D" groups=["Player"]]
+script = ExtResource( 4 )
+speed = 250
+
+[node name="polla" type="Sprite" parent="."]
+visible = false
+modulate = Color( 0.235294, 0.231373, 0.231373, 1 )
+position = Vector2( 9.80035, -18.3796 )
+rotation = 3.14159
+scale = Vector2( 0.777937, -0.200837 )
+texture = ExtResource( 3 )
+
+[node name="rifle" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="Icon" type="Sprite" parent="rifle"]
+visible = false
+modulate = Color( 0.52549, 0, 0, 1 )
+position = Vector2( 32, 1 )
+scale = Vector2( 1, 0.203125 )
+texture = ExtResource( 3 )
+
+[node name="spawnPoint" type="Node2D" parent="rifle"]
+position = Vector2( 65, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -0.5 )
+shape = SubResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="joyStick" parent="CanvasLayer" instance=ExtResource( 1 )]
+position = Vector2( 182, 438 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 4 )
+anims/Run = SubResource( 5 )
+
+[node name="Sprites" type="Node2D" parent="."]
+rotation = -0.00288033
+
+[node name="Body" type="AnimatedSprite" parent="Sprites"]
+scale = Vector2( 0.4, 0.4 )
+frames = SubResource( 2 )
+
+[node name="Hands" type="AnimatedSprite" parent="Sprites"]
+scale = Vector2( 0.4, 0.4 )
+frames = SubResource( 3 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2( 0, 34 )
+z_index = -1
+amount = 40
+lifetime_randomness = 0.46
+local_coords = false
+texture = ExtResource( 9 )
+emission_shape = 2
+emission_rect_extents = Vector2( 20, 10 )
+gravity = Vector2( 0, -20 )
+scale_amount = 0.3
+scale_amount_curve = SubResource( 7 )
+color = Color( 1, 1, 1, 0.643137 )
+color_ramp = SubResource( 6 )
