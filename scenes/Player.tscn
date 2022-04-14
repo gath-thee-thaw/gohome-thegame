@@ -4,7 +4,7 @@
 [ext_resource path="res://Assests/Player/player-body_1.png" type="Texture" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=4]
-[ext_resource path="res://Scripts/rifle.gd" type="Script" id=5]
+[ext_resource path="res://Scripts/ShotGun.gd" type="Script" id=5]
 [ext_resource path="res://Assests/Player/player-body_2.png" type="Texture" id=6]
 [ext_resource path="res://Assests/Player/player-hand_1.png" type="Texture" id=7]
 [ext_resource path="res://Assests/Player/player-hand_2.png" type="Texture" id=8]
@@ -216,19 +216,6 @@ rotation = 3.14159
 scale = Vector2( 0.777937, -0.200837 )
 texture = ExtResource( 3 )
 
-[node name="rifle" type="Node2D" parent="."]
-script = ExtResource( 5 )
-
-[node name="Icon" type="Sprite" parent="rifle"]
-visible = false
-modulate = Color( 0.52549, 0, 0, 1 )
-position = Vector2( 32, 1 )
-scale = Vector2( 1, 0.203125 )
-texture = ExtResource( 3 )
-
-[node name="spawnPoint" type="Node2D" parent="rifle"]
-position = Vector2( 65, 0 )
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -0.5 )
 shape = SubResource( 1 )
@@ -256,6 +243,7 @@ frames = SubResource( 3 )
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2( 0, 34 )
 z_index = -1
+emitting = false
 amount = 40
 lifetime_randomness = 0.46
 local_coords = false
@@ -267,3 +255,26 @@ scale_amount = 0.3
 scale_amount_curve = SubResource( 7 )
 color = Color( 1, 1, 1, 0.643137 )
 color_ramp = SubResource( 6 )
+
+[node name="ShotGun" type="Node2D" parent="."]
+script = ExtResource( 5 )
+
+[node name="ColorRect" type="ColorRect" parent="ShotGun"]
+margin_top = -4.0
+margin_right = 42.0
+margin_bottom = 4.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpawnPoint" type="Node2D" parent="ShotGun"]
+position = Vector2( 47, 0 )
+
+[node name="shot1" type="Node2D" parent="ShotGun/SpawnPoint"]
+position = Vector2( 5, 0 )
+
+[node name="shot2" type="Node2D" parent="ShotGun/SpawnPoint"]
+position = Vector2( 5, 2 )
+
+[node name="shot3" type="Node2D" parent="ShotGun/SpawnPoint"]
+position = Vector2( 5, -2 )

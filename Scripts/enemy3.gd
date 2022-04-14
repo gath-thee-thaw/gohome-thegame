@@ -4,7 +4,7 @@ var speed = 200
 var kSpeed = 200
 onready var player = get_parent().find_node("Player")
 var bullet = load("res://scenes/bulletEnenmy.tscn")
-var stopingDistance = 100
+var stopingDistance = 30
 
 var flip
 var timer
