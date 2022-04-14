@@ -36,11 +36,13 @@ func _physics_process(delta: float):
 		if(!flip):
 			apply_scale(Vector2(-1,1))
 			flip = true
+
 	#Animation
 	if direction.length() != 0:
 		$AnimationPlayer.play("Run")
 	else:
 		$AnimationPlayer.play("RESET")
+	
 	#move
 	if direction.length() > 1.0:
 		direction = direction.normalized()
