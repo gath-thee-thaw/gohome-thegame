@@ -1,14 +1,10 @@
 extends Node2D
 
-
-
 var bullet = load("res://scenes/bulletShotGun.tscn")
 var shootDelay = .5
 var timer = 0
-var backStep = 300
+var backStep = 1000
 var backStepPos
-
-
 
 func _process(delta):
 	
@@ -16,26 +12,19 @@ func _process(delta):
 		if timer <= 0:
 			Shoot()
 			timer = shootDelay
-	
+			if !get_parent().flip:
+				backStepPos = get_parent().position.x - backStep
+				get_parent().position.x = lerp(get_parent().position.x, backStepPos, delta)
+			else:
+				backStepPos = get_parent().position.x + backStep
+				get_parent().position.x = lerp(get_parent().position.x, backStepPos, delta)
+		
 	if timer > 0:
 		timer -= delta
-	
-		
-		
-	
-#
-	
-
-
 
 func Shoot():
-	if !get_parent().flip:
-		backStepPos = get_parent().position.x - backStep
-		get_parent().position.x = lerp(get_parent().position.x, backStepPos, .2)
-	else:
-		backStepPos = get_parent().position.x + backStep
-		get_parent().position.x = lerp(get_parent().position.x, backStepPos, .2)
-	
+	Global.camera.add_trauma(0.35)
+	get_parent().shotgun_knockback()
 	var bul = bullet.instance()
 	bul.position = $SpawnPoint.global_position
 	get_tree().root.add_child(bul)

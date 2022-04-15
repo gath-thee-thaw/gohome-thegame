@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scenes/joystick.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assests/Player/player-body_1.png" type="Texture" id=2]
@@ -9,9 +9,107 @@
 [ext_resource path="res://Assests/Player/player-hand_1.png" type="Texture" id=7]
 [ext_resource path="res://Assests/Player/player-hand_2.png" type="Texture" id=8]
 [ext_resource path="res://Assests/particles-walk.png" type="Texture" id=9]
+[ext_resource path="res://Assests/noise.png" type="Texture" id=10]
+[ext_resource path="res://Assests/Audio/FOOTSTEPS (A) Walking Loop 01.ogg" type="AudioStream" id=11]
+[ext_resource path="res://Assests/Player/player-hand_SHOTGUN.png" type="Texture" id=12]
+[ext_resource path="res://Assests/Audio/WEAPON GUNSHOT Rifle Swish 02.ogg" type="AudioStream" id=13]
+[ext_resource path="res://Assests/Audio/WEAPON CLICK Reload Mechanism 01.ogg" type="AudioStream" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31, 47.5 )
+
+[sub_resource type="Shader" id=8]
+code = "shader_type canvas_item;
+render_mode blend_mul;
+
+uniform float strength = 0.3;
+uniform float fps = 8.0;
+
+float rand(vec2 co){
+    return fract(sin(dot(co.xy ,vec2(12.9898,78.233))) * 43758.5453);
+}
+void fragment() {
+    // Noise
+    float time = floor(TIME * fps);
+    vec2 noise_offset = vec2(time, rand(vec2(time, time * .123) ));
+    COLOR.rgb = (texture(TEXTURE, SCREEN_UV / SCREEN_PIXEL_SIZE / 1024. + noise_offset ).rgb - .3) * strength + (1.0 - strength);
+}"
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = SubResource( 8 )
+shader_param/strength = 0.3
+shader_param/fps = 8.0
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("../Sprites/Hands:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("../Sprites/Hands:offset:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "ShotgunShoot"
+length = 0.6
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("../Sprites/Hands:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.1, -2.93023, -15.0211, -0.1, 4.83382, 0.25, 0, -0.437767, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.1, 0.6 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("../Sprites/Hands:offset:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../ShotGun/ShotgunSound:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../ShotGun/ShotgunReloadSound:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -107,6 +205,38 @@ tracks/7/keys = {
 "update": 0,
 "values": [ false ]
 }
+tracks/8/type = "bezier"
+tracks/8/path = NodePath("Sprites/Hands:position:x")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/9/type = "bezier"
+tracks/9/path = NodePath("Sprites/Hands:position:y")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Walksound:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "Run"
@@ -180,6 +310,28 @@ tracks/5/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/6/type = "bezier"
+tracks/6/path = NodePath("Sprites/Hands:position:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0, 0.732636, 3.07644, -0.25, 0, 0.2, -1.12683, 0.10161, 0, 1.89308, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.4, 0.6 )
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Walksound:playing")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -195,6 +347,11 @@ animations = [ {
 "loop": true,
 "name": "default",
 "speed": 3.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "Shotgun",
+"speed": 5.0
 } ]
 
 [sub_resource type="Curve" id=7]
@@ -225,6 +382,19 @@ shape = SubResource( 1 )
 [node name="joyStick" parent="CanvasLayer" instance=ExtResource( 1 )]
 position = Vector2( 182, 438 )
 
+[node name="Noise" type="TextureRect" parent="CanvasLayer"]
+material = SubResource( 9 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 10 )
+expand = true
+stretch_mode = 2
+
+[node name="GunAnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimationPlayer")
+anims/RESET = SubResource( 11 )
+anims/ShotgunShoot = SubResource( 10 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 4 )
 anims/Run = SubResource( 5 )
@@ -239,6 +409,7 @@ frames = SubResource( 2 )
 [node name="Hands" type="AnimatedSprite" parent="Sprites"]
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 3 )
+animation = "Shotgun"
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2( 0, 34 )
@@ -257,15 +428,8 @@ color = Color( 1, 1, 1, 0.643137 )
 color_ramp = SubResource( 6 )
 
 [node name="ShotGun" type="Node2D" parent="."]
+position = Vector2( -3, 18 )
 script = ExtResource( 5 )
-
-[node name="ColorRect" type="ColorRect" parent="ShotGun"]
-margin_top = -4.0
-margin_right = 42.0
-margin_bottom = 4.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SpawnPoint" type="Node2D" parent="ShotGun"]
 position = Vector2( 47, 0 )
@@ -278,3 +442,17 @@ position = Vector2( 5, 2 )
 
 [node name="shot3" type="Node2D" parent="ShotGun/SpawnPoint"]
 position = Vector2( 5, -2 )
+
+[node name="ShotgunSound" type="AudioStreamPlayer2D" parent="ShotGun"]
+position = Vector2( 3, -18 )
+stream = ExtResource( 13 )
+pitch_scale = 2.0
+
+[node name="ShotgunReloadSound" type="AudioStreamPlayer2D" parent="ShotGun"]
+position = Vector2( 47, 0 )
+stream = ExtResource( 14 )
+volume_db = -10.0
+
+[node name="Walksound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+volume_db = -10.0

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Scripts/bulletShotGun.gd" type="Script" id=1]
+[ext_resource path="res://Assests/Bullet/bullet_spriteframes.tres" type="SpriteFrames" id=2]
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 1.5, 1 )
@@ -20,6 +21,10 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["bullet"]]
 position = Vector2( 0.5, 0 )
 shape = SubResource( 8 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.4, 0.4 )
+frames = ExtResource( 2 )
 
 [connection signal="area_entered" from="." to="." method="_on_bulletShotGun_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_bulletShotGun_body_entered"]

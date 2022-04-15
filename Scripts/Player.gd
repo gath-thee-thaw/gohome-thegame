@@ -1,6 +1,5 @@
 extends Area2D
 
-
 export var speed := 500
 
 var _sprites := {Vector2.RIGHT: 1, Vector2.LEFT: 2, Vector2.UP: 3, Vector2.DOWN: 4}
@@ -11,13 +10,15 @@ var direction
 var bullet = load("res://scenes/bullet2.tscn")
 var mobile = false
 
+var time = 0
+
 var screen_size
 
 func _ready():
 	screen_size = get_viewport_rect().size
 
 func _physics_process(delta: float):
-	
+	time +=delta
 	#Get inputs
 	if(!mobile):
 		direction = Vector2(
@@ -30,10 +31,12 @@ func _physics_process(delta: float):
 	#flip
 	if(Input.get_action_strength("right") or direction.x > 0):
 		if(flip):
+			Global.camera.add_trauma(0.2)
 			apply_scale(Vector2(-1,1))
 			flip = false
 	if(Input.get_action_strength("left")  or direction.x < 0):
 		if(!flip):
+			Global.camera.add_trauma(0.2)
 			apply_scale(Vector2(-1,1))
 			flip = true
 
@@ -50,3 +53,6 @@ func _physics_process(delta: float):
 	position.x = clamp(position.x, 60, screen_size.x-60)
 	position.y = clamp(position.y, 0, screen_size.y-60)
 
+func shotgun_knockback():
+	$GunAnimationPlayer.play("ShotgunShoot")
+	pass

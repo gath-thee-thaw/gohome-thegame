@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://global.gd" type="Script" id=1]
 [ext_resource path="res://scenes/bulletEnenmy.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/enemy2.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/enemy3.tscn" type="PackedScene" id=7]
 [ext_resource path="res://icon.png" type="Texture" id=8]
+[ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/levelSelect.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -117,5 +118,9 @@ script = ExtResource( 10 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="door/Area2D"]
 position = Vector2( -1, -0.144142 )
 shape = SubResource( 7 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+script = ExtResource( 9 )
 
 [connection signal="area_entered" from="door/Area2D" to="door/Area2D" method="_on_Area2D_area_entered"]
