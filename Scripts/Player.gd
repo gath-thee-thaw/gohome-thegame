@@ -19,6 +19,7 @@ func _ready():
 
 func _physics_process(delta: float):
 	time +=delta
+	
 	#Get inputs
 	if(!mobile):
 		direction = Vector2(
@@ -40,6 +41,7 @@ func _physics_process(delta: float):
 			apply_scale(Vector2(-1,1))
 			flip = true
 
+	 
 	#Animation
 	if direction.length() != 0:
 		$AnimationPlayer.play("Run")
@@ -53,6 +55,4 @@ func _physics_process(delta: float):
 	position.x = clamp(position.x, 60, screen_size.x-60)
 	position.y = clamp(position.y, 0, screen_size.y-60)
 
-func shotgun_knockback():
-	$GunAnimationPlayer.play("ShotgunShoot")
-	pass
+

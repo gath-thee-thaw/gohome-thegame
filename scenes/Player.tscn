@@ -1,19 +1,22 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scenes/joystick.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Assests/Player/player-body_1.png" type="Texture" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=4]
-[ext_resource path="res://scenes/ShotGun.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/SMG.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assests/Player/player-body_2.png" type="Texture" id=6]
-[ext_resource path="res://Assests/Player/player-hand_1.png" type="Texture" id=7]
-[ext_resource path="res://Assests/Player/player-hand_2.png" type="Texture" id=8]
 [ext_resource path="res://Assests/particles-walk.png" type="Texture" id=9]
 [ext_resource path="res://Assests/noise.png" type="Texture" id=10]
 [ext_resource path="res://Assests/Audio/FOOTSTEPS (A) Walking Loop 01.ogg" type="AudioStream" id=11]
-[ext_resource path="res://Assests/Player/player-hand_SHOTGUN.png" type="Texture" id=12]
-[ext_resource path="res://Assests/Audio/GUNTech_Sci Fi Shotgun Fire_04.wav" type="AudioStream" id=13]
-[ext_resource path="res://Assests/Audio/GUNMech_Arm Weapon Rattle_10.wav" type="AudioStream" id=14]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31, 47.5 )
@@ -39,77 +42,6 @@ void fragment() {
 shader = SubResource( 8 )
 shader_param/strength = 0.3
 shader_param/fps = 8.0
-
-[sub_resource type="Animation" id=11]
-length = 0.001
-tracks/0/type = "bezier"
-tracks/0/path = NodePath("../Sprites/Hands:offset:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath("../Sprites/Hands:offset:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-
-[sub_resource type="Animation" id=10]
-resource_name = "ShotgunShoot"
-length = 0.6
-tracks/0/type = "bezier"
-tracks/0/path = NodePath("../Sprites/Hands:offset:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.1, -2.93023, -15.0211, -0.1, 4.83382, 0.25, 0, -0.437767, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.1, 0.6 )
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath("../Sprites/Hands:offset:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("../ShotgunSound:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("../ShotgunReloadSound:playing")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0.5 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -333,27 +265,6 @@ tracks/7/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "default",
-"speed": 3.0
-} ]
-
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "default",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 12 ) ],
-"loop": true,
-"name": "Shotgun",
-"speed": 5.0
-} ]
-
 [sub_resource type="Curve" id=7]
 _data = [ Vector2( 0, 0.405682 ), 0.0, 0.0, 0, 0, Vector2( 0.348039, 0.760227 ), 0.0, 0.0, 0, 0, Vector2( 0.70098, 0 ), 0.0, 0.0, 0, 0 ]
 
@@ -364,6 +275,16 @@ colors = PoolColorArray( 1, 1, 1, 0.713376, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.5
 [node name="Player" type="Area2D" groups=["Player"]]
 script = ExtResource( 4 )
 speed = 250
+
+[node name="Sprites" type="Node2D" parent="."]
+rotation = -0.00288032
+
+[node name="Body" type="AnimatedSprite" parent="Sprites"]
+scale = Vector2( 0.4, 0.4 )
+frames = SubResource( 2 )
+
+[node name="Hands" type="AnimatedSprite" parent="Sprites"]
+animation = "Shotgun"
 
 [node name="polla" type="Sprite" parent="."]
 visible = false
@@ -376,6 +297,8 @@ texture = ExtResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -0.5 )
 shape = SubResource( 1 )
+
+[node name="SMG" parent="." instance=ExtResource( 5 )]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -390,28 +313,9 @@ texture = ExtResource( 10 )
 expand = true
 stretch_mode = 2
 
-[node name="GunAnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../AnimationPlayer")
-anims/RESET = SubResource( 11 )
-anims/ShotgunShoot = SubResource( 10 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 4 )
 anims/Run = SubResource( 5 )
-
-[node name="Sprites" type="Node2D" parent="."]
-rotation = -0.00288032
-
-[node name="Body" type="AnimatedSprite" parent="Sprites"]
-scale = Vector2( 0.4, 0.4 )
-frames = SubResource( 2 )
-
-[node name="Hands" type="AnimatedSprite" parent="Sprites"]
-scale = Vector2( 0.4, 0.4 )
-frames = SubResource( 3 )
-animation = "Shotgun"
-
-[node name="ShotGun" parent="." instance=ExtResource( 5 )]
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2( 0, 34 )
@@ -431,14 +335,4 @@ color_ramp = SubResource( 6 )
 
 [node name="Walksound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 11 )
-volume_db = -10.0
-
-[node name="ShotgunSound" type="AudioStreamPlayer2D" parent="."]
-position = Vector2( 3, -18 )
-stream = ExtResource( 13 )
-pitch_scale = 2.0
-
-[node name="ShotgunReloadSound" type="AudioStreamPlayer2D" parent="."]
-position = Vector2( 47, 0 )
-stream = ExtResource( 14 )
 volume_db = -10.0

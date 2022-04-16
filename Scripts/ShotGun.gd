@@ -6,6 +6,11 @@ var timer = 0
 var backStep = 1000
 var backStepPos
 
+func _ready():
+	var hand = $Hands2
+	remove_child($Hands2)
+	get_parent().find_node("Hands").add_child(hand)
+
 func _process(delta):
 	
 	if Input.is_action_just_pressed("shoot"):
@@ -25,7 +30,7 @@ func _process(delta):
 func Shoot():
 	$SpawnPoint/CPUParticles2D.set_emitting(true)
 	Global.camera.add_trauma(0.35)
-	get_parent().shotgun_knockback()
+	shotgun_knockback()
 	var bul = bullet.instance()
 	bul.position = $SpawnPoint.global_position
 	get_tree().root.add_child(bul)
@@ -46,3 +51,7 @@ func Shoot():
 	bul3.playerFlip = get_parent().flip
 	bul3.direction = ($SpawnPoint/shot3.position - $SpawnPoint.position).normalized()
 	bul3.spawnPoint = $SpawnPoint.global_position
+	
+func shotgun_knockback():
+	$GunAnimationPlayer.play("ShotgunShoot")
+	pass
