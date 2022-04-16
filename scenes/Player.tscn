@@ -41,7 +41,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id=9]
 shader = SubResource( 8 )
-shader_param/strength = 0.3
+shader_param/strength = 0.2
 shader_param/fps = 8.0
 
 [sub_resource type="Animation" id=4]
