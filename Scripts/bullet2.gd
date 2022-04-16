@@ -1,7 +1,7 @@
 extends Area2D
 
 var playerFlip
-var speed = 200
+var speed = 500
 var recoil = .5
 var dir
 

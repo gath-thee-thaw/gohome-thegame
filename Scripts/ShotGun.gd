@@ -6,23 +6,21 @@ var timer = 0
 var backStep = 1000
 var backStepPos
 
-func _ready():
-	var hand = $Hands2
-	remove_child($Hands2)
-	get_parent().find_node("Hands").add_child(hand)
+onready var playerNode
 
 func _process(delta):
+	playerNode = Global.player
 	
 	if Input.is_action_just_pressed("shoot"):
 		if timer <= 0:
 			Shoot()
 			timer = shootDelay
-			if !get_parent().flip:
-				backStepPos = get_parent().position.x - backStep
-				get_parent().position.x = lerp(get_parent().position.x, backStepPos, delta)
+			if !playerNode.flip:
+				backStepPos = playerNode.position.x - backStep
+				playerNode.position.x = lerp(playerNode.position.x, backStepPos, delta)
 			else:
-				backStepPos = get_parent().position.x + backStep
-				get_parent().position.x = lerp(get_parent().position.x, backStepPos, delta)
+				backStepPos = playerNode.position.x + backStep
+				playerNode.position.x = lerp(playerNode.position.x, backStepPos, delta)
 		
 	if timer > 0:
 		timer -= delta
@@ -34,24 +32,24 @@ func Shoot():
 	var bul = bullet.instance()
 	bul.position = $SpawnPoint.global_position
 	get_tree().root.add_child(bul)
-	bul.playerFlip = get_parent().flip
+	bul.playerFlip = playerNode.flip
 	bul.direction = ($SpawnPoint/shot1.position - $SpawnPoint.position).normalized()
 	bul.spawnPoint = $SpawnPoint.global_position
 		
 	var bul2 = bullet.instance()
 	bul2.position = $SpawnPoint.global_position
 	get_tree().root.add_child(bul2)
-	bul2.playerFlip = get_parent().flip
+	bul2.playerFlip = playerNode.flip
 	bul2.direction = ($SpawnPoint/shot2.position - $SpawnPoint.position).normalized()
 	bul2.spawnPoint = $SpawnPoint.global_position
 		
 	var bul3 = bullet.instance()
 	bul3.position = $SpawnPoint.global_position
 	get_tree().root.add_child(bul3)
-	bul3.playerFlip = get_parent().flip
+	bul3.playerFlip = playerNode.flip
 	bul3.direction = ($SpawnPoint/shot3.position - $SpawnPoint.position).normalized()
 	bul3.spawnPoint = $SpawnPoint.global_position
 	
 func shotgun_knockback():
-	$GunAnimationPlayer.play("ShotgunShoot")
+	$AnimationPlayer.play("ShotgunShoot")
 	pass

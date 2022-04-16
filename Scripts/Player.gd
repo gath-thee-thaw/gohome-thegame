@@ -54,5 +54,8 @@ func _physics_process(delta: float):
 	position += direction * delta * speed
 	position.x = clamp(position.x, 60, screen_size.x-60)
 	position.y = clamp(position.y, 0, screen_size.y-60)
+	
+func shoot():
+	print("dsafhasdfhkgasdgkj")
 
 

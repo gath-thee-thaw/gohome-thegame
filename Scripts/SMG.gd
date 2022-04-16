@@ -26,4 +26,4 @@ func Shoot():
 		var bul = bullet.instance()
 		bul.position = $SpawnPoint.global_position
 		get_tree().root.add_child(bul)
-		bul.playerFlip = get_parent().flip
+		bul.playerFlip = get_parent().get_parent().get_parent().flip
