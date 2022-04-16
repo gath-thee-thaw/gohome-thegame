@@ -1,14 +1,14 @@
 extends Area2D
 
 var playerFlip
-var speed = 500
-var recoil = .5
+export var speed = 1500
+export (float, 0, 0.1) var recoil = 0.08
 var dir
 
 func _ready():
 	$AnimatedSprite.play("default")
 	var val = rand_range(-recoil, recoil)
-	dir = Vector2(position.x + 10, position.y + val) - position
+	dir = Vector2(position.x + 1, position.y - val) - position
 
 func _process(delta):
 	#position += playerDirection * playerSpeed + transform.x * speed * delta //playerDirection * playerSpeed + 

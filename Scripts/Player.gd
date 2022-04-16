@@ -7,7 +7,6 @@ var _velocity := Vector2.ZERO
 var flip
 var direction
 
-var bullet = load("res://scenes/bullet2.tscn")
 var mobile = false
 
 var time = 0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scripts/bullet2.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/bulletSMG.gd" type="Script" id=1]
 [ext_resource path="res://Assests/Bullet/bullet_spriteframes.tres" type="SpriteFrames" id=2]
 
 [sub_resource type="RectangleShape2D" id=7]
@@ -15,6 +15,7 @@ shape = SubResource( 7 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 2 )
+speed_scale = 2.0
 
 [connection signal="area_entered" from="." to="." method="_on_bullet2_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_bullet2_body_entered"]
