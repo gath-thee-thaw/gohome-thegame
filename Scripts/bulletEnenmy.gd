@@ -3,6 +3,9 @@ extends Area2D
 var playerFlip
 var speed = 1000
 
+func _ready():
+	$AnimatedSprite.play("default")
+
 func _process(delta):
 	#position += playerDirection * playerSpeed + transform.x * speed * delta //playerDirection * playerSpeed + 
 	if !playerFlip:

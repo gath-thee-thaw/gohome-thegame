@@ -32,7 +32,7 @@ margin_left = -141.0
 margin_top = -123.0
 margin_right = 1345.0
 margin_bottom = 829.0
-color = Color( 0.956863, 0.811765, 0.321569, 1 )
+color = Color( 0.262745, 0.270588, 0.32549, 1 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 visible = false
@@ -51,6 +51,7 @@ position = Vector2( 100, 100 )
 [node name="enemy2" parent="YSort" instance=ExtResource( 6 )]
 
 [node name="enemy3" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 389, 129 )
 
 [node name="bulletEnenmy" parent="YSort" instance=ExtResource( 2 )]
 

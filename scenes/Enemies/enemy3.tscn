@@ -1,42 +1,235 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scripts/enemy3.gd" type="Script" id=1]
+[ext_resource path="res://Assests/Enemies/enemy_gun_body.png" type="Texture" id=2]
+[ext_resource path="res://Assests/Enemies/enemy_gun_leg2.png" type="Texture" id=3]
+[ext_resource path="res://Assests/Enemies/enemy_gun_leg1.png" type="Texture" id=4]
+[ext_resource path="res://Assests/Audio/GUNPis_Pistol Fire Longer Tail_05.wav" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 31.5, 47 )
+extents = Vector2( 15.5, 18 )
+
+[sub_resource type="StreamTexture" id=11]
+flags = 4
+load_path = "res://.import/particles-walk.png-246085d37f67224d0065b08a5e25dc0f.stex"
+
+[sub_resource type="Curve" id=12]
+_data = [ Vector2( 0, 0.405682 ), 0.0, 0.0, 0, 0, Vector2( 0.348039, 0.760227 ), 0.0, 0.0, 0, 0, Vector2( 0.70098, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=10]
+offsets = PoolRealArray( 0, 0.0110497, 0.154696, 0.977901, 1 )
+colors = PoolColorArray( 1, 1, 1, 0.713376, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.558011, 1, 1, 1, 0 )
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 3.0
+} ]
+
+[sub_resource type="Animation" id=13]
+resource_name = "RESET"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/Legs:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("walkParticles:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Sprites/Legs:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Run"
+length = 0.6
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("Sprites:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("Sprites:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0, -8.83333, 0, 0, -8.83333, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.3, 0.6 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprites:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 0.25, 1 ),
+"update": 0,
+"values": [ 0.0, 8.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/Legs:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("walkParticles:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="CanvasItemMaterial" id=4]
+blend_mode = 1
+
+[sub_resource type="Gradient" id=14]
+offsets = PoolRealArray( 0.325758, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [node name="enemy3" type="Area2D" groups=["enemy"]]
-position = Vector2( 371, 314 )
 collision_layer = 4
 collision_mask = 3
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.5, -22 )
+position = Vector2( 0.5, 30 )
 shape = SubResource( 6 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_left = -31.0
-margin_top = -69.0
-margin_right = 32.0
-margin_bottom = 25.0
-color = Color( 0.392157, 0.0470588, 0.0470588, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="gun" type="Sprite" parent="."]
-position = Vector2( 20, -1 )
-scale = Vector2( 1, 0.171875 )
-
-[node name="ColorRect" type="ColorRect" parent="gun"]
-margin_left = -31.0
-margin_top = -29.0
-margin_right = 32.0
-margin_bottom = 29.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="spawnPoint" type="Node2D" parent="gun"]
-position = Vector2( 33, 0 )
+position = Vector2( 30, 13 )
+
+[node name="walkParticles" type="CPUParticles2D" parent="."]
+position = Vector2( 0, 42 )
+z_index = -1
+emitting = false
+amount = 40
+lifetime_randomness = 0.46
+local_coords = false
+texture = SubResource( 11 )
+emission_shape = 2
+emission_rect_extents = Vector2( 20, 10 )
+gravity = Vector2( 0, -20 )
+scale_amount = 0.3
+scale_amount_curve = SubResource( 12 )
+color = Color( 0.458824, 0.458824, 0.458824, 0.643137 )
+color_ramp = SubResource( 10 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Legs" type="AnimatedSprite" parent="Sprites"]
+scale = Vector2( 0.4, 0.4 )
+frames = SubResource( 7 )
+
+[node name="Body" type="Sprite" parent="Sprites"]
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 13 )
+anims/Run = SubResource( 5 )
+
+[node name="gunSparksParticles" type="CPUParticles2D" parent="."]
+material = SubResource( 4 )
+use_parent_material = true
+position = Vector2( 40, 16 )
+emitting = false
+amount = 10
+lifetime = 0.8
+one_shot = true
+local_coords = false
+emission_shape = 1
+emission_sphere_radius = 6.0
+direction = Vector2( 10, 0 )
+spread = 20.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 100.0
+initial_velocity_random = 0.12
+scale_amount = 1.1
+scale_amount_random = 1.0
+color = Color( 0.996078, 1, 0.423529, 1 )
+color_ramp = SubResource( 14 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="gunSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 5 )

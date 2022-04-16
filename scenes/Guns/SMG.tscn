@@ -145,7 +145,7 @@ tracks/4/keys = {
 [sub_resource type="CanvasItemMaterial" id=4]
 blend_mode = 1
 
-[sub_resource type="Gradient" id=6]
+[sub_resource type="Gradient" id=14]
 offsets = PoolRealArray( 0.325758, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
@@ -183,4 +183,4 @@ initial_velocity_random = 0.12
 scale_amount = 1.1
 scale_amount_random = 1.0
 color = Color( 0.996078, 1, 0.423529, 1 )
-color_ramp = SubResource( 6 )
+color_ramp = SubResource( 14 )
