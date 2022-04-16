@@ -40,7 +40,6 @@ func _physics_process(delta: float):
 			apply_scale(Vector2(-1,1))
 			flip = true
 
-	 
 	#Animation
 	if direction.length() != 0:
 		$AnimationPlayer.play("Run")

@@ -26,6 +26,7 @@ extents = Vector2( 31, 31.2793 )
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 100, 100 )
 
 [node name="enemy1" parent="YSort" instance=ExtResource( 5 )]
 

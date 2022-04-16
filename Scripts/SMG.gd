@@ -19,3 +19,6 @@ func Shoot():
 	bul.position = $SpawnPoint.global_position
 	get_tree().root.add_child(bul)
 	bul.playerFlip = get_parent().get_parent().get_parent().flip
+
+func shake_camera():
+	Global.camera.add_trauma(0.21)
