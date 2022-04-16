@@ -23,6 +23,7 @@ func _process(delta):
 		timer -= delta
 
 func Shoot():
+	$SpawnPoint/CPUParticles2D.set_emitting(true)
 	Global.camera.add_trauma(0.35)
 	get_parent().shotgun_knockback()
 	var bul = bullet.instance()

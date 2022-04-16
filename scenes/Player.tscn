@@ -4,7 +4,7 @@
 [ext_resource path="res://Assests/Player/player-body_1.png" type="Texture" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=4]
-[ext_resource path="res://Scripts/ShotGun.gd" type="Script" id=5]
+[ext_resource path="res://scenes/ShotGun.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assests/Player/player-body_2.png" type="Texture" id=6]
 [ext_resource path="res://Assests/Player/player-hand_1.png" type="Texture" id=7]
 [ext_resource path="res://Assests/Player/player-hand_2.png" type="Texture" id=8]
@@ -12,8 +12,8 @@
 [ext_resource path="res://Assests/noise.png" type="Texture" id=10]
 [ext_resource path="res://Assests/Audio/FOOTSTEPS (A) Walking Loop 01.ogg" type="AudioStream" id=11]
 [ext_resource path="res://Assests/Player/player-hand_SHOTGUN.png" type="Texture" id=12]
-[ext_resource path="res://Assests/Audio/WEAPON GUNSHOT Rifle Swish 02.ogg" type="AudioStream" id=13]
-[ext_resource path="res://Assests/Audio/WEAPON CLICK Reload Mechanism 01.ogg" type="AudioStream" id=14]
+[ext_resource path="res://Assests/Audio/GUNTech_Sci Fi Shotgun Fire_04.wav" type="AudioStream" id=13]
+[ext_resource path="res://Assests/Audio/GUNMech_Arm Weapon Rattle_10.wav" type="AudioStream" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31, 47.5 )
@@ -87,7 +87,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0 )
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("../ShotGun/ShotgunSound:playing")
+tracks/2/path = NodePath("../ShotgunSound:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -99,13 +99,13 @@ tracks/2/keys = {
 "values": [ true ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("../ShotGun/ShotgunReloadSound:playing")
+tracks/3/path = NodePath("../ShotgunReloadSound:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0.4 ),
+"times": PoolRealArray( 0.5 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
@@ -411,6 +411,8 @@ scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 3 )
 animation = "Shotgun"
 
+[node name="ShotGun" parent="." instance=ExtResource( 5 )]
+
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 position = Vector2( 0, 34 )
 z_index = -1
@@ -427,32 +429,16 @@ scale_amount_curve = SubResource( 7 )
 color = Color( 1, 1, 1, 0.643137 )
 color_ramp = SubResource( 6 )
 
-[node name="ShotGun" type="Node2D" parent="."]
-position = Vector2( -3, 18 )
-script = ExtResource( 5 )
+[node name="Walksound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 11 )
+volume_db = -10.0
 
-[node name="SpawnPoint" type="Node2D" parent="ShotGun"]
-position = Vector2( 47, 0 )
-
-[node name="shot1" type="Node2D" parent="ShotGun/SpawnPoint"]
-position = Vector2( 5, 0 )
-
-[node name="shot2" type="Node2D" parent="ShotGun/SpawnPoint"]
-position = Vector2( 5, 2 )
-
-[node name="shot3" type="Node2D" parent="ShotGun/SpawnPoint"]
-position = Vector2( 5, -2 )
-
-[node name="ShotgunSound" type="AudioStreamPlayer2D" parent="ShotGun"]
+[node name="ShotgunSound" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 3, -18 )
 stream = ExtResource( 13 )
 pitch_scale = 2.0
 
-[node name="ShotgunReloadSound" type="AudioStreamPlayer2D" parent="ShotGun"]
+[node name="ShotgunReloadSound" type="AudioStreamPlayer2D" parent="."]
 position = Vector2( 47, 0 )
 stream = ExtResource( 14 )
-volume_db = -10.0
-
-[node name="Walksound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 11 )
 volume_db = -10.0
