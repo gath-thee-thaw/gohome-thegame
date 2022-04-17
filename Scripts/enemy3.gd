@@ -8,7 +8,7 @@ var stopingDistance = 50
 
 var flip
 var timer
-var waitSeconds = 0.7
+export var waitSeconds = 0.4
 
 func _ready():
 	timer = waitSeconds

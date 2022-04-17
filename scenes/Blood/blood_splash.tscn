@@ -96,11 +96,9 @@ scale_amount_random = 1.0
 scale_amount_curve = SubResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 10, -10 )
+position = Vector2( 18, -16 )
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 2 )
-frame = 5
-playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/splash = SubResource( 3 )

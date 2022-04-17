@@ -6,3 +6,4 @@ func _ready():
 
 func destroy():
 	queue_free()
+

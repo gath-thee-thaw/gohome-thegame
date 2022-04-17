@@ -12,8 +12,8 @@
 
 [sub_resource type="ShaderMaterial" id=14]
 shader = ExtResource( 7 )
-shader_param/flash_colr = Color( 1, 0.0901961, 0.0901961, 1 )
-shader_param/flash_modifier = 0.0
+shader_param/flash_colr = Color( 1, 1, 1, 1 )
+shader_param/flash_modifier = 1.0
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -47,33 +47,6 @@ void fragment() {
 shader = SubResource( 8 )
 shader_param/strength = 0.2
 shader_param/fps = 8.0
-
-[sub_resource type="Animation" id=15]
-resource_name = "Hit"
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprites/Body:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 1 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:material:shader_param/flash_modifier")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 1.0, 0.0 ]
-}
 
 [sub_resource type="Animation" id=4]
 length = 0.001
@@ -177,30 +150,6 @@ tracks/8/keys = {
 "update": 1,
 "values": [ false ]
 }
-tracks/9/type = "value"
-tracks/9/path = NodePath(".:material:shader_param/active")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath(".:material:shader_param/flash_modifier")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
 
 [sub_resource type="Animation" id=5]
 resource_name = "Run"
@@ -274,6 +223,34 @@ _data = [ Vector2( 0, 0.405682 ), 0.0, 0.0, 0, 0, Vector2( 0.348039, 0.760227 ),
 offsets = PoolRealArray( 0, 0.0110497, 0.154696, 0.977901, 1 )
 colors = PoolColorArray( 1, 1, 1, 0.713376, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.558011, 1, 1, 1, 0 )
 
+[sub_resource type="Animation" id=15]
+resource_name = "Hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites/Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:material:shader_param/flash_modifier")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.0461403 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
 [node name="Player" type="Area2D" groups=["player"]]
 material = SubResource( 14 )
 script = ExtResource( 3 )
@@ -287,6 +264,7 @@ rotation = -0.00288032
 use_parent_material = true
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 2 )
+frame = 1
 
 [node name="Hands" type="Node2D" parent="Sprites"]
 use_parent_material = true
@@ -319,7 +297,6 @@ expand = true
 stretch_mode = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Hit = SubResource( 15 )
 anims/RESET = SubResource( 4 )
 anims/Run = SubResource( 5 )
 
@@ -342,3 +319,6 @@ color_ramp = SubResource( 10 )
 [node name="Walksound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 8 )
 volume_db = -10.0
+
+[node name="ImpactAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Hit = SubResource( 15 )

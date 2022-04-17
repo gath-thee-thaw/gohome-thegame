@@ -19,5 +19,5 @@ func _on_bulletEnenmy_body_entered(body):
 
 func _on_bulletEnenmy_area_entered(area):
 	if area.is_in_group("player"):
-		Global.player.hit()
+		Global.player.bullet_hit(position, playerFlip)
 	queue_free()	

@@ -57,11 +57,24 @@ func _physics_process(delta: float):
 func shoot():
 	print("dsafhasdfhkgasdgkj")
 
-func hit():
-	$AnimationPlayer.play("Hit")
-	Global.frame_freeze(0.05, 0.4)
+func bullet_hit(pos, dir):
+	print(pos, dir)
+	$ImpactAnimationPlayer.stop(true)
+	$ImpactAnimationPlayer.play("Hit")
+	Global.frame_freeze(0.05, 0.45)
 	rng.randomize()
 	var bp = Global.blood_splash.instance()
 	add_child(bp)
+	if dir:
+		if flip:
+			bp.set_scale(Vector2(-1,1))
+		else:
+			bp.set_scale(Vector2(1,1))
+	if !dir:
+		if flip:
+			bp.set_scale(Vector2(1,1))
+		else:
+			bp.set_scale(Vector2(-1,1))
+		print("blood flipped")
+	bp.global_position = pos
 	bp.rotation_degrees = rand_range(-40,40)
-
