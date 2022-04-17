@@ -18,8 +18,6 @@ func _on_bulletEnenmy_body_entered(body):
 
 
 func _on_bulletEnenmy_area_entered(area):
-	if area.is_in_group("Player"):
-			#health --
-			#area.queue_free()
-			pass
+	if area.is_in_group("player"):
+		Global.player.hit()
 	queue_free()	

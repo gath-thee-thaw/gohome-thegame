@@ -12,6 +12,7 @@ var mobile = false
 var time = 0
 
 var screen_size
+var rng = RandomNumberGenerator.new()
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -43,7 +44,7 @@ func _physics_process(delta: float):
 	#Animation
 	if direction.length() != 0:
 		$AnimationPlayer.play("Run")
-	else:
+	elif direction.length() == 0:
 		$AnimationPlayer.play("RESET")
 	
 	#move
@@ -56,4 +57,11 @@ func _physics_process(delta: float):
 func shoot():
 	print("dsafhasdfhkgasdgkj")
 
+func hit():
+	$AnimationPlayer.play("Hit")
+	Global.frame_freeze(0.05, 0.4)
+	rng.randomize()
+	var bp = Global.blood_splash.instance()
+	add_child(bp)
+	bp.rotation_degrees = rand_range(-40,40)
 

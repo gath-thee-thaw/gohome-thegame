@@ -150,12 +150,14 @@ offsets = PoolRealArray( 0.325758, 1 )
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
 [node name="SMG" type="Node2D"]
+use_parent_material = true
 script = ExtResource( 1 )
 
 [node name="SpawnPoint" type="Node2D" parent="."]
 position = Vector2( 40, 16 )
 
 [node name="SMG" type="AnimatedSprite" parent="."]
+use_parent_material = true
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 1 )
 

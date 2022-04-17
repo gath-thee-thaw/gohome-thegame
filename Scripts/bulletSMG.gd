@@ -23,5 +23,6 @@ func _on_bullet2_body_entered(body):
 	
 func _on_bullet2_area_entered(area):
 	if area.is_in_group("enemy"):
-			area.queue_free()
+		Global.frame_freeze(0.05, 0.4)
+		area.queue_free()
 	queue_free()
