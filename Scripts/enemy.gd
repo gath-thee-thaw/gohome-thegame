@@ -12,6 +12,8 @@ export var speed := 300
 var stopingDistance = 5
 
 var flip
+var health = 1
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -51,3 +53,11 @@ func setDestination():
 
 func _on_enemy1_body_entered(body):
 	setDestination()
+	
+func damage(var num):
+	health -= num
+	if(health <= 0):
+		Global.enemies -= 1
+		Global.set_enemyNumber()
+		queue_free()
+		

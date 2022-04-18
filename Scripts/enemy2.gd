@@ -7,6 +7,8 @@ var stopingDistance = 50
 var canFollow = true
 var flip
 
+var health = 5
+
 func _process(delta):
 	
 	
@@ -33,6 +35,12 @@ func _process(delta):
 			flip = true
 		
 	   
+func damage(var num):
+	health -= num
+	if(health <= 0):
+		Global.enemies -= 1
+		Global.set_enemyNumber()
+		queue_free()
 		
 	
 		

@@ -264,7 +264,6 @@ rotation = -0.00288032
 use_parent_material = true
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 2 )
-frame = 1
 
 [node name="Hands" type="Node2D" parent="Sprites"]
 use_parent_material = true
@@ -287,6 +286,8 @@ shape = SubResource( 1 )
 
 [node name="joyStick" parent="CanvasLayer" instance=ExtResource( 1 )]
 position = Vector2( 182, 438 )
+collision_layer = 8
+collision_mask = 8
 
 [node name="Noise" type="TextureRect" parent="CanvasLayer"]
 material = SubResource( 9 )
