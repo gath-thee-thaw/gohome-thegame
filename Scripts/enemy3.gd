@@ -41,6 +41,8 @@ func _process(delta):
 	position += direction1 * speed * delta
 	$AnimationPlayer.play("Run")
 	
+	if direction1.length() == 0:
+		$AnimationPlayer.play("RESET")
 #	var distamce = player.position.y - position.y
 #	if(distamce < 0):
 #		distamce *= -1

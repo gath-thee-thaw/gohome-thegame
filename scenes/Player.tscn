@@ -13,7 +13,7 @@
 [sub_resource type="ShaderMaterial" id=14]
 shader = ExtResource( 7 )
 shader_param/flash_colr = Color( 1, 1, 1, 1 )
-shader_param/flash_modifier = 1.0
+shader_param/flash_modifier = 0.0
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {

@@ -1,13 +1,13 @@
 extends Node
 
-var isMobile = true
+var isMobile = false
 var shadow = load("res://scenes/Shadow.tscn")
 var blood_splash = load("res://scenes/Blood/blood_splash.tscn")
 var camera
 var player
 var enemies = 225
 var enemyHud
-var mobile = true
+var mobile = false
 
 func _ready():
 	
