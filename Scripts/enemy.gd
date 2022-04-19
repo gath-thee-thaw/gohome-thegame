@@ -48,16 +48,12 @@ func setDestination():
 	destination.x = rand_range(minX, maxX)
 	destination.y = rand_range(minY, maxY)
 
-
-
-
 func _on_enemy1_body_entered(body):
 	setDestination()
-	
-func damage(var num):
+
+func damage(var num, pos):
 	health -= num
 	if(health <= 0):
 		Global.enemies -= 1
 		Global.set_enemyNumber()
 		queue_free()
-		

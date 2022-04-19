@@ -11,7 +11,6 @@ var mobile = false
 
 func _ready():
 	
-	
 	if get_tree().current_scene.name != "Main_menu":
 		camera = Utils.get_main_node().get_node("Camera2D")
 		player = Utils.get_main_node().get_node("YSort").get_node("Player")
@@ -24,8 +23,6 @@ func _ready():
 		for i in enemies:
 			var shdw = shadow.instance()
 			i.add_child(shdw)
-	
-	
 
 func frame_freeze(timeScale, duration):
 	Engine.time_scale = timeScale

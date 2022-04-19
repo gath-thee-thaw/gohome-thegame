@@ -8,10 +8,9 @@ var canFollow = true
 var flip
 
 var health = 5
+var rng = RandomNumberGenerator.new()
 
 func _process(delta):
-	
-	
 	var direction = Vector2(
 	player.position - position)
 
@@ -33,49 +32,21 @@ func _process(delta):
 		if(!flip):
 			apply_scale(Vector2(-1,1))
 			flip = true
-		
-	   
-func damage(var num):
+
+func damage(var num, pos):
+	var bp = Global.blood_splash.instance()
+	add_child(bp)
+	bp.global_position = pos
+	
 	health -= num
 	if(health <= 0):
 		Global.enemies -= 1
 		Global.set_enemyNumber()
 		queue_free()
-		
-	
-		
-		
-		
-		
-	
-	
-	
-	
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-	
-
 
 func _on_enemy2_area_entered(area):
 	if area.is_in_group("Player"):
 		canFollow = false
-
 
 func _on_enemy2_area_exited(area):
 	if area.is_in_group("Player"):

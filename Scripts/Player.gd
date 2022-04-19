@@ -7,11 +7,9 @@ var _velocity := Vector2.ZERO
 var flip
 var direction
 
-
 var time = 0
-
 var screen_size
-var rng = RandomNumberGenerator.new()
+
 
 func _ready():
 	screen_size = get_viewport_rect().size
@@ -57,11 +55,9 @@ func shoot():
 	print("dsafhasdfhkgasdgkj")
 
 func bullet_hit(pos, dir):
-	print(pos, dir)
 	$ImpactAnimationPlayer.stop(true)
 	$ImpactAnimationPlayer.play("Hit")
 	Global.frame_freeze(0.05, 0.45)
-	rng.randomize()
 	var bp = Global.blood_splash.instance()
 	add_child(bp)
 	if dir:
@@ -76,4 +72,3 @@ func bullet_hit(pos, dir):
 			bp.set_scale(Vector2(-1,1))
 		print("blood flipped")
 	bp.global_position = pos
-	bp.rotation_degrees = rand_range(-40,40)

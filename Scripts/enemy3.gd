@@ -11,7 +11,7 @@ var flip
 var timer
 export var waitSeconds = 0.4
 
-var health = 3
+var health = 30
 
 func _ready():
 	timer = waitSeconds
@@ -78,7 +78,11 @@ func _Timer(var delta):
 		Shoot()
 		timer = waitSeconds
 		
-func damage(var num):
+func damage(var num, var pos):
+	var bp = Global.blood_splash.instance()
+	add_child(bp)
+	bp.global_position = pos
+	
 	health -= num
 	if(health <= 0):
 		Global.enemies -= 1

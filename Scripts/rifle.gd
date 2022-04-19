@@ -1,7 +1,7 @@
 extends Node2D
 
 export var fire_rate = 0.2
-var bullet = load("res://scenes/bullet2.tscn")
+var bullet = load("res://scenes/Bullets/bulletSMG.tscn")
 var can_fire = true
 
 func _process(delta):
