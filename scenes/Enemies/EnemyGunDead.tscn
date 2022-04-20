@@ -1,0 +1,107 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Scripts/EnemyGunDead.gd" type="Script" id=1]
+[ext_resource path="res://Assests/Enemies/enemy_gun_dead/enemy_gun_dead3.png" type="Texture" id=2]
+[ext_resource path="res://Assests/Enemies/enemy_gun_dead/enemy_gun_dead4.png" type="Texture" id=3]
+[ext_resource path="res://Assests/Enemies/enemy_gun_dead/enemy_gun_dead5.png" type="Texture" id=4]
+[ext_resource path="res://Assests/Enemies/enemy_gun_dead/enemy_gun_dead2.png" type="Texture" id=5]
+[ext_resource path="res://Assests/Enemies/enemy_gun_dead/enemy_gun_dead1.png" type="Texture" id=6]
+[ext_resource path="res://Assests/Enemies/enemy_gun_dead/enemy_gun_dead6.png" type="Texture" id=7]
+[ext_resource path="res://Assests/shadow.png" type="Texture" id=8]
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.235294 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "dead"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../AnimatedSprite:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.00738823 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray(  ),
+"transitions": PoolRealArray(  ),
+"update": 0,
+"values": [  ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.6, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.235294 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../AnimatedSprite:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 7 ) ],
+"loop": false,
+"name": "dead",
+"speed": 5.0
+} ]
+
+[node name="EnemyGunDead" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite")
+anims/RESET = SubResource( 3 )
+anims/dead = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.235294 )
+position = Vector2( -43, 51 )
+scale = Vector2( 0.665, 0.4 )
+texture = ExtResource( 8 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -20 )
+scale = Vector2( 0.4, 0.4 )
+frames = SubResource( 1 )
+animation = "dead"
+frame = 5
+playing = true

@@ -11,7 +11,9 @@ var flip
 var timer
 export var waitSeconds = 0.4
 
-var health = 30
+var health = 10
+
+var dead_animation = load("res://scenes/Enemies/EnemyGunDead.tscn")
 
 func _ready():
 	timer = waitSeconds
@@ -87,6 +89,13 @@ func damage(var num, var pos):
 	
 	health -= num
 	if(health <= 0):
+		var da = dead_animation.instance()
+		get_parent().add_child(da)
+		da.global_position = global_position - Vector2(0,-20)
+		if flip:
+			da.set_scale(Vector2(-1,1))
+		else:
+			da.set_scale(Vector2(1,1))
 		Global.enemies -= 1
 		Global.set_enemyNumber()
 		queue_free()
