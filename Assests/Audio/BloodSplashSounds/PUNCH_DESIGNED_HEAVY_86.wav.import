@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PUNCH_DESIGNED_HEAVY_86.wav-709ee4e946c6fd7f1db05daa254e51de.sample"
+
+[deps]
+
+source_file="res://Assests/Audio/BloodSplashSounds/PUNCH_DESIGNED_HEAVY_86.wav"
+dest_files=[ "res://.import/PUNCH_DESIGNED_HEAVY_86.wav-709ee4e946c6fd7f1db05daa254e51de.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

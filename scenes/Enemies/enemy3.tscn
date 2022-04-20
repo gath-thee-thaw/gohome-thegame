@@ -1,10 +1,16 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Scripts/enemy3.gd" type="Script" id=1]
 [ext_resource path="res://Assests/Enemies/enemy_gun_body.png" type="Texture" id=2]
 [ext_resource path="res://Assests/Enemies/enemy_gun_leg2.png" type="Texture" id=3]
 [ext_resource path="res://Assests/Enemies/enemy_gun_leg1.png" type="Texture" id=4]
 [ext_resource path="res://Assests/Audio/GUNPis_Pistol Fire Longer Tail_05.wav" type="AudioStream" id=5]
+[ext_resource path="res://Assests/Shaders/Flash.gdshader" type="Shader" id=6]
+
+[sub_resource type="ShaderMaterial" id=15]
+shader = ExtResource( 6 )
+shader_param/flash_colr = Color( 0.760784, 0.160784, 0.109804, 1 )
+shader_param/flash_modifier = 0.0
 
 [sub_resource type="StreamTexture" id=11]
 flags = 4
@@ -160,12 +166,45 @@ colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 15.5, 18 )
 
+[sub_resource type="Animation" id=16]
+resource_name = "Hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/flash_modifier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=17]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material:shader_param/flash_modifier")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
 [node name="enemy3" type="Area2D" groups=["enemy"]]
+material = SubResource( 15 )
 collision_layer = 4
 collision_mask = 3
 script = ExtResource( 1 )
 
 [node name="gun" type="Sprite" parent="."]
+use_parent_material = true
 
 [node name="spawnPoint" type="Node2D" parent="gun"]
 position = Vector2( 30, 13 )
@@ -190,12 +229,15 @@ __meta__ = {
 }
 
 [node name="Sprites" type="Node2D" parent="."]
+use_parent_material = true
 
 [node name="Legs" type="AnimatedSprite" parent="Sprites"]
+use_parent_material = true
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 7 )
 
 [node name="Body" type="Sprite" parent="Sprites"]
+use_parent_material = true
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 2 )
 
@@ -233,3 +275,7 @@ stream = ExtResource( 5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.5, 30 )
 shape = SubResource( 6 )
+
+[node name="ImpactAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Hit = SubResource( 16 )
+anims/RESET = SubResource( 17 )

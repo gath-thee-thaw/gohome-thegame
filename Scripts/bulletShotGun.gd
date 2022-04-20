@@ -20,7 +20,7 @@ func _process(delta):
 
 func _on_bulletShotGun_area_entered(area):
 	if area.is_in_group("enemy"):
-			area.damage(5)
+			area.damage(5, position)
 	if !area.is_in_group("bullet") and !area.is_in_group("Player"):
 		queue_free()
 

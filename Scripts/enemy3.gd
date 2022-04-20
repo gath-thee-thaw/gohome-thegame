@@ -79,6 +79,8 @@ func _Timer(var delta):
 		timer = waitSeconds
 		
 func damage(var num, var pos):
+	$ImpactAnimationPlayer.stop(true)
+	$ImpactAnimationPlayer.play("Hit")
 	var bp = Global.blood_splash.instance()
 	add_child(bp)
 	bp.global_position = pos
