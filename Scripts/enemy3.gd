@@ -1,5 +1,8 @@
 extends Area2D
 
+export var knockback = 50
+var isknockback = false
+
 var speed = 200
 var kSpeed = 200
 onready var player = get_parent().find_node("Player")
@@ -14,13 +17,15 @@ export var waitSeconds = 0.4
 var health = 10
 
 var dead_animation = load("res://scenes/Enemies/EnemyGunDead.tscn")
+var current_xpos
 
 func _ready():
 	timer = waitSeconds
 
 var direction1 = null
+
+
 func _process(delta):
-	
 	var xDist = player.position.x - position.x
 	var yDist = player.position.y - position.y
 	
@@ -45,25 +50,24 @@ func _process(delta):
 	
 	if direction1.length() == 0:
 		$AnimationPlayer.play("RESET")
-#	var distamce = player.position.y - position.y
-#	if(distamce < 0):
-#		distamce *= -1
-#	if distamce <= stopingDistance:
-#		speed = 0
-#		$AnimationPlayer.play("RESET")
-#		_Timer(delta)
-#	else:
-#		speed = kSpeed
 
 	#flip
 	if(player.position.x > position.x):
 		if(flip):
 			apply_scale(Vector2(-1,1))
 			flip = false
+			knockback = -(abs(knockback))
+			
 	if(player.position.x < position.x):
 		if(!flip):
 			apply_scale(Vector2(-1,1))
 			flip = true
+			knockback = abs(knockback)
+			
+	if isknockback:
+		global_position.x = lerp(global_position.x, current_xpos + knockback, 0.6)
+		isknockback = false
+
 
 func Shoot():
 	$gunSparksParticles.set_emitting(true)
@@ -73,20 +77,23 @@ func Shoot():
 	bul.position = $gun/spawnPoint.global_position
 	get_tree().root.add_child(bul)
 	bul.playerFlip = flip
-	
+
+
 func _Timer(var delta):
 	timer -= delta
 	if(timer < 0):
 		Shoot()
 		timer = waitSeconds
-		
+
+
 func damage(var num, var pos):
 	$ImpactAnimationPlayer.stop(true)
 	$ImpactAnimationPlayer.play("Hit")
 	var bp = Global.blood_splash.instance()
 	add_child(bp)
 	bp.global_position = pos
-	
+	isknockback = true
+	current_xpos = global_position.x
 	health -= num
 	if(health <= 0):
 		var da = dead_animation.instance()
