@@ -48,7 +48,6 @@ func update_amplitude():
 	amplitude_y = rng.randf_range(-amplitude, amplitude)
 
 func add_trauma(amount):
-	print(amount)
 	trauma = min(trauma + amount, 1.0)
 func shake():
 	var amount = pow(trauma, trauma_power)

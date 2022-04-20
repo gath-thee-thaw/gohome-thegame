@@ -5,6 +5,8 @@ var shadow = load("res://scenes/Shadow.tscn")
 var blood_splash = load("res://scenes/Blood/blood_splash.tscn")
 var camera
 var player
+var camera_follow
+
 var enemies = 225
 var enemyHud
 var mobile = false
@@ -13,6 +15,7 @@ func _ready():
 	
 	if get_tree().current_scene.name != "Main_menu":
 		camera = Utils.get_main_node().get_node("Camera2D")
+		camera_follow = Utils.get_main_node().get_node("Camera2D").get_node("CameraFollow")
 		player = Utils.get_main_node().get_node("YSort").get_node("Player")
 		enemyHud = Utils.get_main_node().get_node("Hud").get_node("enemies")
 		set_enemyNumber()

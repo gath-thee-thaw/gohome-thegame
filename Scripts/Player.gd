@@ -10,13 +10,12 @@ var direction
 var time = 0
 var screen_size
 
-
 func _ready():
+	
 	screen_size = get_viewport_rect().size
 
 func _physics_process(delta: float):
 	time +=delta
-	
 	#Get inputs
 	if(!Global.mobile):
 		direction = Vector2(

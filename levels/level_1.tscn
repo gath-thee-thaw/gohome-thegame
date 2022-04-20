@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Assests/Backgrounds/bg2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Bullets/bulletEnenmy.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Scripts/levelSelect.gd" type="Script" id=10]
 [ext_resource path="res://Fonts/National Hero!.otf" type="DynamicFontData" id=11]
 [ext_resource path="res://Scripts/enemies.gd" type="Script" id=12]
+[ext_resource path="res://scenes/CameraFollow.tscn" type="PackedScene" id=13]
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 31.5, 336 )
@@ -151,7 +152,9 @@ limit_left = -100
 limit_top = -100
 limit_bottom = 100
 script = ExtResource( 9 )
-target = NodePath("../YSort/Player")
+
+[node name="CameraFollow" parent="Camera2D" instance=ExtResource( 13 )]
+position = Vector2( 640, 360 )
 
 [node name="Hud" type="CanvasLayer" parent="."]
 

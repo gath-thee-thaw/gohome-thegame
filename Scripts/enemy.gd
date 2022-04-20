@@ -19,7 +19,6 @@ var health = 1
 func _ready():
 	setDestination()
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var direction := Vector2(

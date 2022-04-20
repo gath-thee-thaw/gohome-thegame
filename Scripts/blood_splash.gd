@@ -4,7 +4,7 @@ var rng = RandomNumberGenerator.new()
 
 func _ready():
 	rng.randomize()
-	$AnimationPlayer.play("splash")
+	play_random_animation()
 	rotation_degrees = rand_range(-40,40)
 	
 	#meka hadapanko random z index ekak enna
@@ -13,3 +13,8 @@ func _ready():
 func destroy():
 	queue_free()
 
+func play_random_animation():
+	var animations = $AnimatedSprite.frames.get_animation_names()
+	var animation_id = randi() % animations.size()
+	var animation_name = animations[animation_id]
+	$AnimatedSprite.play(animation_name)

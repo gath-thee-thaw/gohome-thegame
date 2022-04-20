@@ -14,6 +14,7 @@ func _process(delta):
 	if !Input.is_action_pressed("shoot"):
 		$AnimationPlayer.play("RESET")
 func Shoot():
+	Global.camera_follow.shooting()
 	$AnimationPlayer.play("SMGshoot")
 	var bul = bullet.instance()
 	bul.position = $SpawnPoint.global_position
