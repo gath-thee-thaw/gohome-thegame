@@ -10,9 +10,14 @@ var direction
 var time = 0
 var screen_size
 
+export var knockback = 50
+var isknockback = false
+var current_xpos
+
+
 func _ready():
-	
 	screen_size = get_viewport_rect().size
+
 
 func _physics_process(delta: float):
 	time +=delta
@@ -28,14 +33,13 @@ func _physics_process(delta: float):
 	#flip
 	if(Input.get_action_strength("right") or direction.x > 0):
 		if(flip):
-			Global.camera.add_trauma(0.2)
 			apply_scale(Vector2(-1,1))
 			flip = false
 	if(Input.get_action_strength("left")  or direction.x < 0):
 		if(!flip):
-			Global.camera.add_trauma(0.2)
 			apply_scale(Vector2(-1,1))
 			flip = true
+			
 
 	#Animation
 	if direction.length() != 0:
@@ -50,10 +54,17 @@ func _physics_process(delta: float):
 	position.x = clamp(position.x, 60, screen_size.x-60)
 	position.y = clamp(position.y, 0, screen_size.y-60)
 	
+	if isknockback:
+		global_position.x = lerp(global_position.x, current_xpos + knockback, 0.6)
+		isknockback = false
+		
+		
 func shoot():
 	print("dsafhasdfhkgasdgkj")
 
 func bullet_hit(pos, dir):
+	isknockback = true
+	current_xpos = global_position.x
 	$ImpactAnimationPlayer.stop(true)
 	$ImpactAnimationPlayer.play("Hit")
 	Global.frame_freeze(0.05, 0.45)
@@ -62,12 +73,18 @@ func bullet_hit(pos, dir):
 	if dir:
 		if flip:
 			bp.set_scale(Vector2(-1,1))
+			knockback = -(abs(knockback))
+			
 		else:
 			bp.set_scale(Vector2(1,1))
+			knockback = -(abs(knockback))
+			
 	if !dir:
 		if flip:
 			bp.set_scale(Vector2(1,1))
+			knockback = abs(knockback)
+			print("lol")
 		else:
 			bp.set_scale(Vector2(-1,1))
-		print("blood flipped")
+			knockback = abs(knockback)
 	bp.global_position = pos

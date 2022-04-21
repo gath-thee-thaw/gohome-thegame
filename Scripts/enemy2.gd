@@ -34,6 +34,7 @@ func _process(delta):
 			flip = true
 
 func damage(var num, pos):
+	Global.camera.add_trauma(0.01)
 	var bp = Global.blood_splash.instance()
 	add_child(bp)
 	bp.global_position = pos

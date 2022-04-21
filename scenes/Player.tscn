@@ -24,7 +24,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 28, 23.5 )
+extents = Vector2( 23, 22.25 )
 
 [sub_resource type="Shader" id=8]
 code = "shader_type canvas_item;
@@ -48,10 +48,21 @@ shader = SubResource( 8 )
 shader_param/strength = 0.2
 shader_param/fps = 8.0
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="StreamTexture" id=11]
+flags = 4
+load_path = "res://.import/particles-walk.png-246085d37f67224d0065b08a5e25dc0f.stex"
+
+[sub_resource type="Curve" id=12]
+_data = [ Vector2( 0, 0.405682 ), 0.0, 0.0, 0, 0, Vector2( 0.348039, 0.760227 ), 0.0, 0.0, 0, 0, Vector2( 0.70098, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=10]
+offsets = PoolRealArray( 0, 0.0110497, 0.154696, 0.977901, 1 )
+colors = PoolColorArray( 1, 1, 1, 0.713376, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.558011, 1, 1, 1, 0 )
+
+[sub_resource type="Animation" id=16]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("Sprites/Body:playing")
+tracks/0/path = NodePath("Sprites:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -60,10 +71,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ false ]
+"values": [ Vector2( 0, -40 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Sprites/Body:frame")
+tracks/1/path = NodePath("Sprites:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -71,31 +82,35 @@ tracks/1/enabled = true
 tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ 0 ]
+"update": 0,
+"values": [ 0.0 ]
 }
-tracks/2/type = "bezier"
-tracks/2/path = NodePath("Sprites:position:x")
+tracks/2/type = "value"
+tracks/2/path = NodePath("walkParticles:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
 }
-tracks/3/type = "bezier"
-tracks/3/path = NodePath("Sprites:position:y")
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprites/Body:playing")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Sprites:rotation_degrees")
+tracks/4/path = NodePath("Sprites/Body:frame")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -103,89 +118,49 @@ tracks/4/enabled = true
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ -0.16503 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("walkParticles:emitting")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ false ]
-}
-tracks/6/type = "bezier"
-tracks/6/path = NodePath("Sprites/Hands:position:x")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/7/type = "bezier"
-tracks/7/path = NodePath("Sprites/Hands:position:y")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("Walksound:playing")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ false ]
+"values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=17]
 resource_name = "Run"
 length = 0.6
 loop = true
-tracks/0/type = "bezier"
-tracks/0/path = NodePath("Sprites:position:x")
-tracks/0/interp = 1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprites:position")
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0 )
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -40 ), Vector2( 0, -50 ), Vector2( 0, -40 ) ]
 }
-tracks/1/type = "bezier"
-tracks/1/path = NodePath("Sprites:position:y")
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprites:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0, -8.83333, 0, 0, -8.83333, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.3, 0.6 )
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -5.0, 0.0 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Sprites:rotation_degrees")
+tracks/2/path = NodePath("walkParticles:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 0.3, 0.6 ),
-"transitions": PoolRealArray( 1, 0.25, 1 ),
-"update": 0,
-"values": [ 0.0, 8.0, 0.0 ]
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Sprites/Body:playing")
@@ -199,29 +174,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [ true ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("walkParticles:emitting")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="StreamTexture" id=11]
-flags = 4
-load_path = "res://.import/particles-walk.png-246085d37f67224d0065b08a5e25dc0f.stex"
-
-[sub_resource type="Curve" id=12]
-_data = [ Vector2( 0, 0.405682 ), 0.0, 0.0, 0, 0, Vector2( 0.348039, 0.760227 ), 0.0, 0.0, 0, 0, Vector2( 0.70098, 0 ), 0.0, 0.0, 0, 0 ]
-
-[sub_resource type="Gradient" id=10]
-offsets = PoolRealArray( 0, 0.0110497, 0.154696, 0.977901, 1 )
-colors = PoolColorArray( 1, 1, 1, 0.713376, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.558011, 1, 1, 1, 0 )
 
 [sub_resource type="Animation" id=15]
 resource_name = "Hit"
@@ -258,12 +210,13 @@ speed = 250
 
 [node name="Sprites" type="Node2D" parent="."]
 use_parent_material = true
-rotation = -0.00288032
+position = Vector2( 0, -40 )
 
 [node name="Body" type="AnimatedSprite" parent="Sprites"]
 use_parent_material = true
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 2 )
+playing = true
 
 [node name="Hands" type="Node2D" parent="Sprites"]
 use_parent_material = true
@@ -279,7 +232,7 @@ scale = Vector2( 0.777937, -0.200837 )
 texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 3, 23.5 )
+position = Vector2( 0, -18.75 )
 shape = SubResource( 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -297,12 +250,7 @@ texture = ExtResource( 9 )
 expand = true
 stretch_mode = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/RESET = SubResource( 4 )
-anims/Run = SubResource( 5 )
-
 [node name="walkParticles" type="CPUParticles2D" parent="."]
-position = Vector2( 0, 34 )
 z_index = -1
 emitting = false
 amount = 40
@@ -321,5 +269,13 @@ color_ramp = SubResource( 10 )
 stream = ExtResource( 8 )
 volume_db = -10.0
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 16 )
+anims/Run = SubResource( 17 )
+
 [node name="ImpactAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Hit = SubResource( 15 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 6.0
+margin_bottom = 5.0

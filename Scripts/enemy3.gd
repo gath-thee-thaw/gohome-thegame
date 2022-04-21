@@ -70,8 +70,8 @@ func _process(delta):
 
 
 func Shoot():
-	$gunSparksParticles.set_emitting(true)
-	$gunSound.play()
+	$gun/gunSparksParticles.set_emitting(true)
+	$gun/gunSound.play()
 	Global.camera.add_trauma(0.3)
 	var bul = bullet.instance()
 	bul.position = $gun/spawnPoint.global_position
@@ -90,6 +90,7 @@ func damage(var num, var pos):
 	$ImpactAnimationPlayer.stop(true)
 	$ImpactAnimationPlayer.play("Hit")
 	var bp = Global.blood_splash.instance()
+	Global.camera.add_trauma(0.02)
 	add_child(bp)
 	bp.global_position = pos
 	isknockback = true

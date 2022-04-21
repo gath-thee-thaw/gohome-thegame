@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Assests/Backgrounds/bg2.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Bullets/bulletEnenmy.tscn" type="PackedScene" id=2]
@@ -13,12 +13,13 @@
 [ext_resource path="res://Fonts/National Hero!.otf" type="DynamicFontData" id=11]
 [ext_resource path="res://Scripts/enemies.gd" type="Script" id=12]
 [ext_resource path="res://scenes/CameraFollow.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Assests/Backgrounds/1.jpg" type="Texture" id=14]
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 31.5, 336 )
+extents = Vector2( 31.5, 396.5 )
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 508.25, 30.5 )
+extents = Vector2( 663.625, 30.5 )
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 31, 31.2793 )
@@ -28,23 +29,21 @@ size = 64
 font_data = ExtResource( 11 )
 
 [node name="level_1" type="Node2D"]
+position = Vector2( 1, 0 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 1280, 0 )
-
-[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer"]
-margin_left = -141.0
-margin_top = -123.0
-margin_right = 1345.0
-margin_bottom = 829.0
-color = Color( 0.262745, 0.270588, 0.32549, 1 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 visible = false
 texture = ExtResource( 1 )
 centered = false
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 14 )
 
 [node name="MobileControlls" parent="." instance=ExtResource( 3 )]
 
@@ -68,10 +67,11 @@ position = Vector2( 389, 129 )
 position = Vector2( 1328, 338 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/walls/StaticBody2D"]
-position = Vector2( 6, 18 )
+position = Vector2( -51, -8.5 )
 shape = SubResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="YSort/walls/StaticBody2D"]
+visible = false
 margin_left = -24.0
 margin_top = -308.0
 margin_right = 40.0
@@ -85,10 +85,13 @@ __meta__ = {
 position = Vector2( -80, 303 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/walls/StaticBody2D2"]
-position = Vector2( 6, 18 )
+position = Vector2( 157, 37 )
+rotation = 0.0316712
+scale = Vector2( 1, 1 )
 shape = SubResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="YSort/walls/StaticBody2D2"]
+visible = false
 margin_left = -29.0
 margin_top = -315.0
 margin_right = 34.0
@@ -102,10 +105,11 @@ __meta__ = {
 position = Vector2( 506, 757 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/walls/StaticBody2D3"]
-position = Vector2( 31.5, 15.5 )
+position = Vector2( 156.375, -19 )
 shape = SubResource( 4 )
 
 [node name="ColorRect" type="ColorRect" parent="YSort/walls/StaticBody2D3"]
+visible = false
 margin_left = -514.0
 margin_top = -17.0
 margin_right = 580.0
@@ -119,10 +123,11 @@ __meta__ = {
 position = Vector2( 586, -103 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/walls/StaticBody2D4"]
-position = Vector2( -31.25, 19 )
+position = Vector2( 20, 85 )
 shape = SubResource( 4 )
 
 [node name="ColorRect" type="ColorRect" parent="YSort/walls/StaticBody2D4"]
+visible = false
 margin_left = -534.0
 margin_right = 476.0
 margin_bottom = 40.0
@@ -147,10 +152,11 @@ shape = SubResource( 7 )
 [node name="Camera2D" type="Camera2D" parent="."]
 process_priority = 1
 current = true
-zoom = Vector2( 1.3, 1.3 )
-limit_left = -100
-limit_top = -100
-limit_bottom = 100
+zoom = Vector2( 0.7, 0.7 )
+limit_left = 0
+limit_top = 0
+limit_right = 1280
+limit_bottom = 720
 script = ExtResource( 9 )
 
 [node name="CameraFollow" parent="Camera2D" instance=ExtResource( 13 )]
