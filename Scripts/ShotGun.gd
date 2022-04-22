@@ -27,26 +27,31 @@ func _process(delta):
 
 func Shoot():
 	shotgun_knockback()
+	
 	var bul = bullet.instance()
 	bul.position = $SpawnPoint.global_position
 	get_tree().root.add_child(bul)
 	bul.playerFlip = playerNode.flip
-	bul.direction = -($SpawnPoint/shot1.position + position).normalized()
-	bul.spawnPoint = $SpawnPoint.global_position
+	bul.dir =  bullet(-.05, .05, bul.global_position)
+	
+	
 
 	var bul2 = bullet.instance()
 	bul2.position = $SpawnPoint.global_position
 	get_tree().root.add_child(bul2)
 	bul2.playerFlip = playerNode.flip
-	bul2.direction = -($SpawnPoint/shot2.position + position).normalized()
-	bul2.spawnPoint = $SpawnPoint.global_position
+	bul2.dir = bullet(-.05, -.1, bul2.global_position)
+	
+	
 
 	var bul3 = bullet.instance()
 	bul3.position = $SpawnPoint.global_position
 	get_tree().root.add_child(bul3)
 	bul3.playerFlip = playerNode.flip
-	bul3.direction = -($SpawnPoint/shot3.position + position).normalized()
-	bul3.spawnPoint = $SpawnPoint.global_position
+	bul3.dir = bullet(.05, .1, bul3.global_position)
+	
+	
+	
 	
 func shotgun_knockback():
 	$AnimationPlayer.play("ShotgunShoot")
@@ -54,3 +59,8 @@ func shotgun_knockback():
 
 func camera_shake():
 	Global.camera.add_trauma(0.35)
+	
+func bullet(var recoil1, var recoil2, var pos):
+	var val = rand_range(recoil1, recoil2)
+	var dir = Vector2(pos.x + 1, pos.y - val) - pos
+	return dir

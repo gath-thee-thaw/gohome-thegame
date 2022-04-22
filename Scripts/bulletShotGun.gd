@@ -2,18 +2,24 @@ extends Area2D
 
 var playerFlip
 var speed = 1500
-var direction
-var maxDist = 400
+
+var maxDist = 300
 var spawnPoint
 
+var dir
+
+
 func _ready():
+	spawnPoint = global_position
 	$AnimatedSprite.play("default")
+
+	
 func _process(delta):
 	#position += playerDirection * playerSpeed + transform.x * speed * delta //playerDirection * playerSpeed + 
 	if !playerFlip:
-		position += -direction * speed * delta
+		position += dir * speed * delta
 	else:
-		position += direction * speed * delta
+		position += -dir * speed * delta
 	
 	if position.distance_to(spawnPoint) > maxDist:
 		queue_free()	

@@ -13,7 +13,7 @@ func _ready():
 
 func _process(delta):
 	#position += playerDirection * playerSpeed + transform.x * speed * delta //playerDirection * playerSpeed + 
-	pos = position
+	
 	if !playerFlip:
 		position += dir * speed * delta
 	else:
@@ -25,5 +25,5 @@ func _on_bullet2_body_entered(body):
 func _on_bullet2_area_entered(area):
 	if area.is_in_group("enemy"):
 		Global.frame_freeze(0.05, 0.4)
-		area.damage(1, pos)
+		area.damage(1, position)
 	queue_free()

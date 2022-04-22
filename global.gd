@@ -2,7 +2,7 @@ extends Node
 
 var isMobile = false
 var shadow = load("res://scenes/Shadow.tscn")
-var blood_splash = load("res://scenes/Blood/blood_splash.tscn")
+onready var blood_splash = load("res://scenes/Blood/blood_splash.tscn")
 var camera
 var player
 var camera_follow

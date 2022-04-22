@@ -28,7 +28,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/randomAudioStreamPlayer/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [input]
 
