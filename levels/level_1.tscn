@@ -41,9 +41,17 @@ texture = ExtResource( 1 )
 centered = false
 
 [node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 14 )
+
+[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer"]
+margin_left = -187.0
+margin_top = -139.0
+margin_right = 1466.0
+margin_bottom = 875.0
+color = Color( 0.847059, 0.666667, 0.772549, 1 )
 
 [node name="MobileControlls" parent="." instance=ExtResource( 3 )]
 
@@ -52,11 +60,11 @@ texture = ExtResource( 14 )
 [node name="Player" parent="YSort" instance=ExtResource( 4 )]
 position = Vector2( 100, 100 )
 
-[node name="enemy1" parent="YSort" instance=ExtResource( 5 )]
+[node name="enemy1" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
 
 [node name="enemy2" parent="YSort" instance=ExtResource( 6 )]
 
-[node name="enemy3" parent="YSort" instance=ExtResource( 7 )]
+[node name="enemy3" parent="YSort" groups=["enemyGun"] instance=ExtResource( 7 )]
 position = Vector2( 389, 129 )
 
 [node name="bulletEnenmy" parent="YSort" instance=ExtResource( 2 )]
@@ -87,7 +95,6 @@ position = Vector2( -80, 303 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/walls/StaticBody2D2"]
 position = Vector2( 157, 37 )
 rotation = 0.0316712
-scale = Vector2( 1, 1 )
 shape = SubResource( 3 )
 
 [node name="ColorRect" type="ColorRect" parent="YSort/walls/StaticBody2D2"]
@@ -152,7 +159,6 @@ shape = SubResource( 7 )
 [node name="Camera2D" type="Camera2D" parent="."]
 process_priority = 1
 current = true
-zoom = Vector2( 0.7, 0.7 )
 limit_left = 0
 limit_top = 0
 limit_right = 1280

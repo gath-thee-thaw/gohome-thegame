@@ -11,6 +11,11 @@ var enemies = 225
 var enemyHud
 var mobile = false
 
+var blood_big = load("res://scenes/Blood/BloodBig.tscn")
+var random_x_pos = Vector2(0,0)
+
+var rng = RandomNumberGenerator.new()
+
 func _ready():
 	
 	if get_tree().current_scene.name != "Main_menu":
@@ -34,3 +39,21 @@ func frame_freeze(timeScale, duration):
 	
 func set_enemyNumber():
 	enemyHud.text = str(enemies)
+
+
+#JUICE EFFECTS 
+func add_blood_big(node, no_of_splashes):
+	while no_of_splashes > 0:
+		
+		if node.is_in_group("enemyGun"):
+			random_x_pos = Vector2(rand_range(0,100),20)
+		if node.is_in_group("enemyRun"):
+			random_x_pos = Vector2(rand_range(-20,20),20)
+		print(node.global_position)
+		rng.randomize()
+		var pos = node.global_position
+		var bb = blood_big.instance()
+		add_child(bb)
+		bb.global_position = pos + random_x_pos
+		no_of_splashes -= 1
+

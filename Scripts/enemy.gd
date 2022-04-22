@@ -84,12 +84,13 @@ func damage(var num, pos):
 	if(health <= 0):
 		var da = dead_animation.instance()
 		get_parent().add_child(da)
-		da.global_position = global_position 
+		da.global_position = global_position
 		if flip:
 			da.set_scale(Vector2(-1,1))
 		else:
 			da.set_scale(Vector2(1,1))
-			
+		
+		Global.add_blood_big(self, 1)
 		Global.enemies -= 1
 		Global.set_enemyNumber()
 		queue_free()

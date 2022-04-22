@@ -80,7 +80,6 @@ frame = 1
 playing = true
 
 [node name="walkParticles" type="CPUParticles2D" parent="."]
-position = Vector2( 0, 42 )
 z_index = -1
 amount = 20
 lifetime_randomness = 0.46

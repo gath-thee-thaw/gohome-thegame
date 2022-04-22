@@ -104,6 +104,7 @@ func damage(var num, var pos):
 			da.set_scale(Vector2(-1,1))
 		else:
 			da.set_scale(Vector2(1,1))
+		Global.add_blood_big(self, 3)
 		Global.enemies -= 1
 		Global.set_enemyNumber()
 		queue_free()
