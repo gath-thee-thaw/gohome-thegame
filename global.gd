@@ -46,7 +46,7 @@ func add_blood_big(node, no_of_splashes):
 	while no_of_splashes > 0:
 		
 		if node.is_in_group("enemyGun"):
-			random_x_pos = Vector2(rand_range(0,100),20)
+			random_x_pos = Vector2(rand_range(-20,20),20)
 		if node.is_in_group("enemyRun"):
 			random_x_pos = Vector2(rand_range(-20,20),20)
 		print(node.global_position)
