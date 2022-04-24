@@ -47,18 +47,19 @@ anchor_bottom = 1.0
 texture = ExtResource( 14 )
 
 [node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer"]
+visible = false
 margin_left = -187.0
 margin_top = -139.0
 margin_right = 1466.0
 margin_bottom = 875.0
-color = Color( 0.847059, 0.666667, 0.772549, 1 )
+color = Color( 0.27451, 0.27451, 0.27451, 1 )
 
 [node name="MobileControlls" parent="." instance=ExtResource( 3 )]
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 100, 100 )
+position = Vector2( 90, 176 )
 
 [node name="enemy1" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
 
@@ -156,17 +157,16 @@ script = ExtResource( 10 )
 position = Vector2( -1, -0.144142 )
 shape = SubResource( 7 )
 
-[node name="Camera2D" type="Camera2D" parent="."]
-process_priority = 1
-current = true
-limit_left = 0
-limit_top = 0
-limit_right = 1280
-limit_bottom = 720
-script = ExtResource( 9 )
+[node name="CameraFollow" parent="." instance=ExtResource( 13 )]
+position = Vector2( 640, 60 )
 
-[node name="CameraFollow" parent="Camera2D" instance=ExtResource( 13 )]
-position = Vector2( 640, 360 )
+[node name="Camera2D" type="Camera2D" parent="CameraFollow"]
+process_priority = 1
+position = Vector2( -640, -60 )
+current = true
+limit_smoothed = true
+script = ExtResource( 9 )
+target = NodePath("..")
 
 [node name="Hud" type="CanvasLayer" parent="."]
 

@@ -1,6 +1,6 @@
 extends Camera2D
 
-export (float, 1, 1000) var frequency = 1
+export (float, 1, 1000) var frequency = 0
 export (float, 1000) var amplitude = 10
 var amplitude_x =0
 var amplitude_y =0

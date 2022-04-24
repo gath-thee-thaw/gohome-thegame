@@ -1,30 +1,38 @@
 extends Position2D
 
+export var shoot_offset = 200
 onready var player_node = Global.player
 onready var camera_node = get_parent()
-var offsetting = false
+var is_offsetting = false
+var currentx_pos = Vector2(0,0)
 
 func _ready():
-	pass
-
+	global_position.y = 360
+	print(global_position.y)
 func _process(delta):
-	#print(position.x)
-	global_position.x = player_node.global_position.x
-	pass
+	
+	if player_node.flip:
+		shoot_offset = -abs(shoot_offset)
+#		if $Timer.is_stopped(false):
+#			$Timer.stop()
+	if !player_node.flip:
+		shoot_offset = abs(shoot_offset)
+
+	
+	if is_offsetting:
+		global_position.x = lerp(global_position.x , currentx_pos + shoot_offset , 0.2)
+		#is_offsetting = false
+
+	else:
+		global_position.x = lerp(global_position.x , player_node.global_position.x , 0.05)
+
 
 func shooting():
-	var current_xpos = position.x
-	print(current_xpos)
-	offsetting = true
-	#var current_xpos = global_position.x
-#	if $Tween.is_active() == false:
-#		$Tween.interpolate_property(self, "position",
-#			Vector2(0,0), Vector2(100,0), 1,
-#			Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
-#		$Tween.start()
-		#offsetting
-	if current_xpos > 0:
-		position.x = current_xpos + 100
-	elif current_xpos <= 0:
-		position.x = current_xpos - 100
-	#offsetting = false
+	currentx_pos = player_node.global_position.x
+	$Timer.start(1)
+	is_offsetting = true
+
+
+func _on_Timer_timeout():
+	is_offsetting = false
+	pass # Replace with function body.
