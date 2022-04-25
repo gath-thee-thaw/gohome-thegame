@@ -4,14 +4,14 @@ var destination = Vector2()
 
 var maxX = 987
 var minX = 42
-var maxY = 580
-var minY = 23
+var maxY = 720
+var minY = 240
 
 export var speed := 300
 var stopingDistance = 5
 
 var flip
-var health = 5
+var health = 3
 
 var isknockback = false
 var current_xpos
@@ -66,9 +66,10 @@ func _on_enemy1_body_entered(body):
 	setDestination()
 
 func damage(var num, pos):
+	Global.camera.shake(100,0.4)
 	$ImpactAnimationPlayer.stop(true)
 	$ImpactAnimationPlayer.play("Hit")
-	Global.camera.add_trauma(0.02)
+
 	var bp = Global.blood_splash.instance()
 	add_child(bp)
 	bp.global_position = pos

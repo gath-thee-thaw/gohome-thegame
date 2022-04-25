@@ -16,7 +16,7 @@ var current_xpos
 
 
 func _ready():
-	screen_size = get_viewport_rect().size
+	screen_size = Vector2(3000,720)
 
 
 func _physics_process(delta: float):
@@ -51,8 +51,8 @@ func _physics_process(delta: float):
 	if direction.length() > 1.0:
 		direction = direction.normalized()
 	position += direction * delta * speed
-	position.x = clamp(position.x, 60, screen_size.x-60)
-	position.y = clamp(position.y, 0, screen_size.y-60)
+	position.x = clamp(position.x, 0, screen_size.x)
+	position.y = clamp(position.y, 0, screen_size.y)
 	
 	if isknockback:
 		global_position.x = lerp(global_position.x, current_xpos + knockback, 0.6)

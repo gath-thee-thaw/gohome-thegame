@@ -28,7 +28,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray(  )
+enabled=PoolStringArray( "res://addons/randomAudioStreamPlayer/plugin.cfg", "res://addons/vnen.tiled_importer/plugin.cfg" )
 
 [input]
 
@@ -72,6 +72,7 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_1="player"
 2d_physics/layer_2="bullets"
 2d_physics/layer_3="enemies"
+2d_physics/layer_5="walls"
 
 [physics]
 
@@ -83,3 +84,7 @@ quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
 environment/default_environment="res://default_env.tres"
+
+[tiled_importer]
+
+enable_json_format=true

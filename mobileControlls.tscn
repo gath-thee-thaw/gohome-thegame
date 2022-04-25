@@ -5,6 +5,7 @@
 [node name="CanvasLayer" type="CanvasLayer"]
 
 [node name="ShootButton" type="TouchScreenButton" parent="."]
+visible = false
 position = Vector2( 867, 446 )
 scale = Vector2( 0.4375, 0.4375 )
 normal = ExtResource( 1 )

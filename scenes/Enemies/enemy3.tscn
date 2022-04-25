@@ -256,7 +256,6 @@ position = Vector2( 0, -40 )
 use_parent_material = true
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 7 )
-frame = 1
 
 [node name="Body" type="Sprite" parent="Sprites"]
 use_parent_material = true

@@ -22,4 +22,6 @@ func Shoot():
 	bul.playerFlip = get_parent().get_parent().get_parent().flip
 
 func shake_camera():
-	Global.camera.add_trauma(0.21)
+	Global.camera.shake(100,0.2)
+	pass
+	

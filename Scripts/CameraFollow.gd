@@ -9,19 +9,18 @@ var currentx_pos = Vector2(0,0)
 func _ready():
 	global_position.y = 360
 	print(global_position.y)
-func _process(delta):
 	
+	
+func _process(delta):
+
 	if player_node.flip:
 		shoot_offset = -abs(shoot_offset)
-#		if $Timer.is_stopped(false):
-#			$Timer.stop()
+
 	if !player_node.flip:
 		shoot_offset = abs(shoot_offset)
 
-	
 	if is_offsetting:
 		global_position.x = lerp(global_position.x , currentx_pos + shoot_offset , 0.2)
-		#is_offsetting = false
 
 	else:
 		global_position.x = lerp(global_position.x , player_node.global_position.x , 0.05)
@@ -35,4 +34,3 @@ func shooting():
 
 func _on_Timer_timeout():
 	is_offsetting = false
-	pass # Replace with function body.

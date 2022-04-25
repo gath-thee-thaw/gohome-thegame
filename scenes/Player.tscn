@@ -237,6 +237,7 @@ shape = SubResource( 1 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="joyStick" parent="CanvasLayer" instance=ExtResource( 1 )]
+visible = false
 position = Vector2( 182, 438 )
 collision_layer = 8
 collision_mask = 8
@@ -274,7 +275,3 @@ anims/Run = SubResource( 17 )
 
 [node name="ImpactAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Hit = SubResource( 15 )
-
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 6.0
-margin_bottom = 5.0

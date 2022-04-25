@@ -1,32 +1,25 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://Assests/Backgrounds/bg2.png" type="Texture" id=1]
+[ext_resource path="res://scenes/Wall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Bullets/bulletEnenmy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://mobileControlls.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/Enemies/enemy1.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/Enemies/enemy2.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/Enemies/enemy3.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Assests/Audio/Red Doors 2.0 (GameClosure Edition).mp3" type="AudioStream" id=6]
 [ext_resource path="res://icon.png" type="Texture" id=8]
-[ext_resource path="res://Scripts/Camera2D.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/levelSelect.gd" type="Script" id=10]
 [ext_resource path="res://Fonts/National Hero!.otf" type="DynamicFontData" id=11]
 [ext_resource path="res://Scripts/enemies.gd" type="Script" id=12]
 [ext_resource path="res://scenes/CameraFollow.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Assests/Backgrounds/1.jpg" type="Texture" id=14]
-
-[sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 31.5, 396.5 )
-
-[sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 663.625, 30.5 )
-
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 31, 31.2793 )
+[ext_resource path="res://Assests/Backgrounds/room1.tmx" type="PackedScene" id=15]
+[ext_resource path="res://scenes/Camera2D.tscn" type="PackedScene" id=16]
 
 [sub_resource type="DynamicFont" id=8]
 size = 64
 font_data = ExtResource( 11 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 31, 31.2793 )
 
 [node name="level_1" type="Node2D"]
 position = Vector2( 1, 0 )
@@ -35,116 +28,138 @@ position = Vector2( 1, 0 )
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 
-[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-visible = false
-texture = ExtResource( 1 )
-centered = false
-
-[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 14 )
-
 [node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer"]
-visible = false
-margin_left = -187.0
+margin_left = -81.0
 margin_top = -139.0
-margin_right = 1466.0
-margin_bottom = 875.0
-color = Color( 0.27451, 0.27451, 0.27451, 1 )
+margin_right = 2411.0
+margin_bottom = 929.0
+color = Color( 0.172549, 0.117647, 0.0470588, 1 )
+
+[node name="room1" parent="ParallaxBackground/ParallaxLayer" instance=ExtResource( 15 )]
+
+[node name="Wall" parent="ParallaxBackground/ParallaxLayer" instance=ExtResource( 1 )]
+collision_layer = 16
+collision_mask = 15
 
 [node name="MobileControlls" parent="." instance=ExtResource( 3 )]
+
+[node name="Hud" type="CanvasLayer" parent="."]
+
+[node name="enemies" type="RichTextLabel" parent="Hud"]
+margin_left = 982.0
+margin_top = 2.0
+margin_right = 1273.0
+margin_bottom = 81.0
+custom_fonts/normal_font = SubResource( 8 )
+text = "Hello"
+script = ExtResource( 12 )
 
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 90, 176 )
+position = Vector2( 1608, 446 )
+collision_mask = 17
 
 [node name="enemy1" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
+position = Vector2( 500, 500 )
+collision_mask = 19
 
-[node name="enemy2" parent="YSort" instance=ExtResource( 6 )]
+[node name="enemy2" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
+position = Vector2( 991, 392 )
+collision_mask = 19
 
-[node name="enemy3" parent="YSort" groups=["enemyGun"] instance=ExtResource( 7 )]
-position = Vector2( 389, 129 )
+[node name="enemy3" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
+position = Vector2( 708, 360 )
+collision_mask = 19
+
+[node name="enemy4" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
+position = Vector2( 870, 481 )
+collision_mask = 19
+
+[node name="enemy5" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
+position = Vector2( 732, 540 )
+collision_mask = 19
+
+[node name="enemy6" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
+position = Vector2( 543, 372 )
+collision_mask = 19
+
+[node name="enemy7" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
+position = Vector2( 299, 321 )
+collision_mask = 19
+
+[node name="enemy8" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
+position = Vector2( 273, 550 )
+collision_mask = 19
+
+[node name="enemy9" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
+position = Vector2( 477, 592 )
+collision_mask = 19
+
+[node name="enemy10" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
+position = Vector2( 798, 379 )
+collision_mask = 19
+
+[node name="enemy11" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
+position = Vector2( 1051, 541 )
+collision_mask = 19
+
+[node name="enemy12" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
+position = Vector2( 1168, 345 )
+collision_mask = 19
+
+[node name="enemy13" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
+position = Vector2( 1155, 451 )
+collision_mask = 19
+
+[node name="enemy14" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
+position = Vector2( 674, 453 )
+collision_mask = 19
+
+[node name="enemy15" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
+position = Vector2( 930, 588 )
+collision_mask = 19
+
+[node name="enemy16" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
+position = Vector2( 1024, 462 )
+collision_mask = 19
+
+[node name="enemy17" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
+position = Vector2( 967, 322 )
+collision_mask = 19
+
+[node name="enemy18" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
+position = Vector2( 816, 557 )
+collision_mask = 19
+
+[node name="enemy19" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
+position = Vector2( 653, 554 )
+collision_mask = 19
+
+[node name="enemy20" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
+position = Vector2( 582, 460 )
+collision_mask = 19
+
+[node name="enemy21" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
+position = Vector2( 451, 383 )
+collision_mask = 19
+
+[node name="enemy22" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
+position = Vector2( 537, 285 )
+collision_mask = 19
+
+[node name="enemy23" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
+position = Vector2( 382, 522 )
+collision_mask = 19
+
+[node name="enemy24" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
+position = Vector2( 284, 409 )
+collision_mask = 19
 
 [node name="bulletEnenmy" parent="YSort" instance=ExtResource( 2 )]
 
-[node name="walls" type="Node2D" parent="YSort"]
-
-[node name="StaticBody2D" type="StaticBody2D" parent="YSort/walls"]
-position = Vector2( 1328, 338 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/walls/StaticBody2D"]
-position = Vector2( -51, -8.5 )
-shape = SubResource( 3 )
-
-[node name="ColorRect" type="ColorRect" parent="YSort/walls/StaticBody2D"]
-visible = false
-margin_left = -24.0
-margin_top = -308.0
-margin_right = 40.0
-margin_bottom = 352.0
-color = Color( 0.0235294, 0.0980392, 0.227451, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="YSort/walls"]
-position = Vector2( -80, 303 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/walls/StaticBody2D2"]
-position = Vector2( 157, 37 )
-rotation = 0.0316712
-shape = SubResource( 3 )
-
-[node name="ColorRect" type="ColorRect" parent="YSort/walls/StaticBody2D2"]
-visible = false
-margin_left = -29.0
-margin_top = -315.0
-margin_right = 34.0
-margin_bottom = 345.0
-color = Color( 0.0235294, 0.0980392, 0.227451, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="StaticBody2D3" type="StaticBody2D" parent="YSort/walls"]
-position = Vector2( 506, 757 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/walls/StaticBody2D3"]
-position = Vector2( 156.375, -19 )
-shape = SubResource( 4 )
-
-[node name="ColorRect" type="ColorRect" parent="YSort/walls/StaticBody2D3"]
-visible = false
-margin_left = -514.0
-margin_top = -17.0
-margin_right = 580.0
-margin_bottom = 47.0
-color = Color( 0.0156863, 0.156863, 0.262745, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="YSort/walls"]
-position = Vector2( 586, -103 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="YSort/walls/StaticBody2D4"]
-position = Vector2( 20, 85 )
-shape = SubResource( 4 )
-
-[node name="ColorRect" type="ColorRect" parent="YSort/walls/StaticBody2D4"]
-visible = false
-margin_left = -534.0
-margin_right = 476.0
-margin_bottom = 40.0
-color = Color( 0.0156863, 0.156863, 0.262745, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="door" type="Sprite" parent="."]
+visible = false
 modulate = Color( 0.407843, 0.027451, 0.027451, 1 )
 position = Vector2( 992, 323 )
 scale = Vector2( 1, 3.46875 )
@@ -158,28 +173,13 @@ position = Vector2( -1, -0.144142 )
 shape = SubResource( 7 )
 
 [node name="CameraFollow" parent="." instance=ExtResource( 13 )]
-position = Vector2( 640, 60 )
 
-[node name="Camera2D" type="Camera2D" parent="CameraFollow"]
-process_priority = 1
-position = Vector2( -640, -60 )
+[node name="Camera2D" parent="CameraFollow" instance=ExtResource( 16 )]
 current = true
-limit_smoothed = true
-script = ExtResource( 9 )
-target = NodePath("..")
+limit_left = 0
 
-[node name="Hud" type="CanvasLayer" parent="."]
-
-[node name="enemies" type="RichTextLabel" parent="Hud"]
-margin_left = 982.0
-margin_top = 2.0
-margin_right = 1273.0
-margin_bottom = 81.0
-custom_fonts/normal_font = SubResource( 8 )
-text = "Hello"
-script = ExtResource( 12 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
 
 [connection signal="area_entered" from="door/Area2D" to="door/Area2D" method="_on_Area2D_area_entered"]
