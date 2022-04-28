@@ -19,5 +19,9 @@ scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 2 )
 speed_scale = 2.0
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 20.0
+
 [connection signal="area_entered" from="." to="." method="_on_bullet2_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_bullet2_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
