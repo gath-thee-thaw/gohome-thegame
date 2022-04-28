@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/Wall.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Bullets/bulletEnenmy.tscn" type="PackedScene" id=2]
@@ -11,7 +11,6 @@
 [ext_resource path="res://Fonts/National Hero!.otf" type="DynamicFontData" id=11]
 [ext_resource path="res://Scripts/enemies.gd" type="Script" id=12]
 [ext_resource path="res://scenes/CameraFollow.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Assests/Backgrounds/room1.tmx" type="PackedScene" id=15]
 [ext_resource path="res://scenes/Camera2D.tscn" type="PackedScene" id=16]
 
 [sub_resource type="DynamicFont" id=8]
@@ -34,8 +33,6 @@ margin_top = -139.0
 margin_right = 2411.0
 margin_bottom = 929.0
 color = Color( 0.172549, 0.117647, 0.0470588, 1 )
-
-[node name="room1" parent="ParallaxBackground/ParallaxLayer" instance=ExtResource( 15 )]
 
 [node name="Wall" parent="ParallaxBackground/ParallaxLayer" instance=ExtResource( 1 )]
 collision_layer = 16

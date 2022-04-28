@@ -2,13 +2,11 @@
 
 importer="vnen.tiled_importer"
 type="PackedScene"
-path="res://.import/room1.tmx-ea80ba8855eae98780381477e43a27ce.scn"
+valid=false
 
 [deps]
 
 source_file="res://Assests/Backgrounds/room1.tmx"
-dest_files=[ "res://.import/room1.tmx-ea80ba8855eae98780381477e43a27ce.scn" ]
-
 [params]
 
 custom_properties=true
