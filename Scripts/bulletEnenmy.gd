@@ -13,11 +13,12 @@ func _process(delta):
 	else:
 		position += -transform.x * speed * delta
 
-func _on_bulletEnenmy_body_entered(body):
-	queue_free()	
-
 
 func _on_bulletEnenmy_area_entered(area):
 	if area.is_in_group("player"):
 		Global.player.bullet_hit(position, playerFlip)
 	queue_free()	
+
+
+func _on_BulletEnemy_body_entered(_body):
+	queue_free()

@@ -6,7 +6,7 @@ var isknockback = false
 var speed = 200
 var kSpeed = 200
 onready var player = get_parent().find_node("Player")
-var bullet = load("res://scenes/Bullets/bulletEnenmy.tscn")
+var bullet = load("res://scenes/Bullets/bulletEnemy.tscn")
 var stopingDistance = 20
 var xStopingDistance = 200
 

@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 6, 3 )
 
-[node name="bulletEnenmy" type="Area2D"]
+[node name="BulletEnemy" type="Area2D"]
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
@@ -17,4 +17,4 @@ scale = Vector2( 0.3, 0.3 )
 frames = ExtResource( 1 )
 
 [connection signal="area_entered" from="." to="." method="_on_bulletEnenmy_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_bulletEnenmy_body_entered"]
+[connection signal="body_entered" from="." to="." method="_on_BulletEnemy_body_entered"]

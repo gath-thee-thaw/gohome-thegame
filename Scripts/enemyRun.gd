@@ -1,6 +1,6 @@
 extends Area2D
 
-onready var player = get_parent().find_node("Player")
+onready var player = Global.player
 var kSpeed = 200
 var speed = 1000
 var stopingDistance = 50

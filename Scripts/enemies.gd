@@ -2,5 +2,5 @@ extends RichTextLabel
 
 
 
-func _process(delta):
+func process():
 	pass

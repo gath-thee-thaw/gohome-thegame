@@ -99,7 +99,7 @@ scale = Vector2( 0.665, 0.4 )
 texture = ExtResource( 8 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -71 )
+position = Vector2( 0, -64 )
 scale = Vector2( 0.4, 0.4 )
 frames = SubResource( 1 )
 animation = "dead"

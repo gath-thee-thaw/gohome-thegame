@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Scripts/enemy.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/enemyChase.gd" type="Script" id=1]
 [ext_resource path="res://Assests/Enemies/enemy_run/enemy_run1.png" type="Texture" id=2]
 [ext_resource path="res://Assests/Enemies/enemy_run/enemy_run2.png" type="Texture" id=3]
 [ext_resource path="res://Assests/Shaders/Flash.gdshader" type="Shader" id=4]
@@ -29,11 +29,11 @@ _data = [ Vector2( 0, 0.405682 ), 0.0, 0.0, 0, 0, Vector2( 0.348039, 0.760227 ),
 offsets = PoolRealArray( 0, 0.0110497, 0.154696, 0.977901, 1 )
 colors = PoolColorArray( 1, 1, 1, 0.713376, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.558011, 1, 1, 1, 0 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=16]
 resource_name = "Hit"
 length = 0.2
 tracks/0/type = "value"
-tracks/0/path = NodePath("AnimatedSprite:modulate")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -48,24 +48,12 @@ tracks/0/keys = {
 [sub_resource type="Animation" id=8]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:material:shader_param/flash_modifier")
+tracks/0/path = NodePath("AnimatedSprite:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("AnimatedSprite:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -75,7 +63,7 @@ tracks/1/keys = {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 12, 9.5 )
 
-[node name="enemy1" type="Area2D" groups=["enemy"]]
+[node name="EnemyRun" type="Area2D" groups=["enemy"]]
 material = SubResource( 9 )
 collision_layer = 4
 collision_mask = 3
@@ -108,12 +96,11 @@ __meta__ = {
 }
 
 [node name="ImpactAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Hit = SubResource( 7 )
+anims/Hit = SubResource( 16 )
 anims/RESET = SubResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -6 )
 shape = SubResource( 2 )
 
-[connection signal="area_entered" from="." to="." method="_on_enemy1_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_enemy1_body_entered"]

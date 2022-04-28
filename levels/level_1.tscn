@@ -1,12 +1,14 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/Wall.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/Bullets/bulletEnenmy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/Bullets/bulletEnemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://mobileControlls.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/Enemies/enemy1.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/Enemies/EnemyRun.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Assests/Audio/Red Doors 2.0 (GameClosure Edition).mp3" type="AudioStream" id=6]
+[ext_resource path="res://scenes/Enemies/EnemyGun.tscn" type="PackedScene" id=7]
 [ext_resource path="res://icon.png" type="Texture" id=8]
+[ext_resource path="res://scenes/Enemies/EnemyChase.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scripts/levelSelect.gd" type="Script" id=10]
 [ext_resource path="res://Fonts/National Hero!.otf" type="DynamicFontData" id=11]
 [ext_resource path="res://Scripts/enemies.gd" type="Script" id=12]
@@ -57,101 +59,22 @@ script = ExtResource( 12 )
 position = Vector2( 1608, 446 )
 collision_mask = 17
 
-[node name="enemy1" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
-position = Vector2( 500, 500 )
-collision_mask = 19
+[node name="EnemyGun" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 22, 116 )
 
-[node name="enemy2" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
-position = Vector2( 991, 392 )
-collision_mask = 19
+[node name="EnemyGun2" parent="YSort" instance=ExtResource( 7 )]
+position = Vector2( 326, 288 )
 
-[node name="enemy3" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
-position = Vector2( 708, 360 )
-collision_mask = 19
+[node name="EnemyChase" parent="YSort" instance=ExtResource( 9 )]
 
-[node name="enemy4" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
-position = Vector2( 870, 481 )
-collision_mask = 19
+[node name="EnemyChase2" parent="YSort" instance=ExtResource( 9 )]
+position = Vector2( 406, 56 )
 
-[node name="enemy5" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
-position = Vector2( 732, 540 )
-collision_mask = 19
+[node name="EnemyRun" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 93, 254 )
 
-[node name="enemy6" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
-position = Vector2( 543, 372 )
-collision_mask = 19
-
-[node name="enemy7" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
-position = Vector2( 299, 321 )
-collision_mask = 19
-
-[node name="enemy8" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
-position = Vector2( 273, 550 )
-collision_mask = 19
-
-[node name="enemy9" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
-position = Vector2( 477, 592 )
-collision_mask = 19
-
-[node name="enemy10" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
-position = Vector2( 798, 379 )
-collision_mask = 19
-
-[node name="enemy11" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
-position = Vector2( 1051, 541 )
-collision_mask = 19
-
-[node name="enemy12" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
-position = Vector2( 1168, 345 )
-collision_mask = 19
-
-[node name="enemy13" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
-position = Vector2( 1155, 451 )
-collision_mask = 19
-
-[node name="enemy14" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
-position = Vector2( 674, 453 )
-collision_mask = 19
-
-[node name="enemy15" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
-position = Vector2( 930, 588 )
-collision_mask = 19
-
-[node name="enemy16" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
-position = Vector2( 1024, 462 )
-collision_mask = 19
-
-[node name="enemy17" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
-position = Vector2( 967, 322 )
-collision_mask = 19
-
-[node name="enemy18" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
-position = Vector2( 816, 557 )
-collision_mask = 19
-
-[node name="enemy19" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
-position = Vector2( 653, 554 )
-collision_mask = 19
-
-[node name="enemy20" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
-position = Vector2( 582, 460 )
-collision_mask = 19
-
-[node name="enemy21" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
-position = Vector2( 451, 383 )
-collision_mask = 19
-
-[node name="enemy22" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
-position = Vector2( 537, 285 )
-collision_mask = 19
-
-[node name="enemy23" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
-position = Vector2( 382, 522 )
-collision_mask = 19
-
-[node name="enemy24" parent="YSort" groups=["enemyRun"] instance=ExtResource( 5 )]
-position = Vector2( 284, 409 )
-collision_mask = 19
+[node name="EnemyRun2" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( 335, 148 )
 
 [node name="bulletEnenmy" parent="YSort" instance=ExtResource( 2 )]
 

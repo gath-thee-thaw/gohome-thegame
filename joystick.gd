@@ -17,7 +17,7 @@ func _input(event):
 			smallCircle.position = Vector2(0, 0)
 			touched = false
 
-func _process(delta):
+func process(_delta):
 	if touched:
 		smallCircle.global_position = get_global_mouse_position()
 		smallCircle.position = bigCircle.position + (smallCircle.position - bigCircle.position).clamped(maxDistance)

@@ -27,8 +27,8 @@ func _ready():
 		
 		#add shadows
 		player.add_child(shadow.instance())
-		var enemies = get_tree().get_nodes_in_group("enemy")
-		for i in enemies:
+		var total_enemies = get_tree().get_nodes_in_group("enemy")
+		for i in total_enemies:
 			var shdw = shadow.instance()
 			i.add_child(shdw)
 
