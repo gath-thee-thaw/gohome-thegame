@@ -52,18 +52,18 @@ func _process(delta):
 		$AnimationPlayer.play("RESET")
 
 	#flip
-	if(player.position.x > position.x):
+	if(player.global_position.x > global_position.x):
+		knockback = -abs(knockback)
 		if(flip):
 			apply_scale(Vector2(-1,1))
 			flip = false
-			knockback = -(abs(knockback))
-			
-	if(player.position.x < position.x):
+
+	if(player.global_position.x < global_position.x):
+		knockback = abs(knockback)
 		if(!flip):
 			apply_scale(Vector2(-1,1))
 			flip = true
-			knockback = abs(knockback)
-			
+
 	if isknockback:
 		global_position.x = lerp(global_position.x, current_xpos + knockback, 0.6)
 		isknockback = false

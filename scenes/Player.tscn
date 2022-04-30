@@ -8,7 +8,7 @@
 [ext_resource path="res://Assests/Player/player-body_2.png" type="Texture" id=6]
 [ext_resource path="res://Assests/Shaders/Flash.gdshader" type="Shader" id=7]
 [ext_resource path="res://Assests/Audio/FOOTSTEPS (A) Walking Loop 01.ogg" type="AudioStream" id=8]
-[ext_resource path="res://Assests/noise.png" type="Texture" id=9]
+[ext_resource path="res://Assests/noise-2.jpg" type="Texture" id=9]
 
 [sub_resource type="ShaderMaterial" id=14]
 shader = ExtResource( 7 )
@@ -45,7 +45,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id=9]
 shader = SubResource( 8 )
-shader_param/strength = 0.2
+shader_param/strength = 0.06
 shader_param/fps = 8.0
 
 [sub_resource type="StreamTexture" id=11]
@@ -235,6 +235,7 @@ position = Vector2( 0, -18.75 )
 shape = SubResource( 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 100
 
 [node name="joyStick" parent="CanvasLayer" instance=ExtResource( 1 )]
 visible = false

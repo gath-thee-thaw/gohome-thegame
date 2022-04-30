@@ -1,6 +1,6 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://scenes/Wall.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Bullets/bulletEnemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://mobileControlls.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=4]
@@ -13,7 +13,21 @@
 [ext_resource path="res://Fonts/National Hero!.otf" type="DynamicFontData" id=11]
 [ext_resource path="res://Scripts/enemies.gd" type="Script" id=12]
 [ext_resource path="res://scenes/CameraFollow.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/Waves.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Assests/Backgrounds/Foreground/bg-overlay.png" type="Texture" id=15]
 [ext_resource path="res://scenes/Camera2D.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Assests/sphere50x50.png" type="Texture" id=17]
+
+[sub_resource type="StreamTexture" id=11]
+flags = 4
+load_path = "res://.import/sphere50x50.png-28ab9886d7d75f851df7e0f592354be8.stex"
+
+[sub_resource type="Curve" id=12]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.104265, 0.242045 ), -0.0504784, -0.0504784, 0, 0, Vector2( 1, 0.301136 ), 2.64892, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=13]
+offsets = PoolRealArray( 0, 0.989362, 1 )
+colors = PoolColorArray( 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0 )
 
 [sub_resource type="DynamicFont" id=8]
 size = 64
@@ -22,23 +36,39 @@ font_data = ExtResource( 11 )
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 31, 31.2793 )
 
+[sub_resource type="Curve" id=9]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.104265, 0.242045 ), -0.0504784, -0.0504784, 0, 0, Vector2( 1, 0.301136 ), 2.64892, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=10]
+offsets = PoolRealArray( 0, 0.75, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0 )
+
 [node name="level_1" type="Node2D"]
 position = Vector2( 1, 0 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1340, 0 )
 
-[node name="ColorRect" type="ColorRect" parent="ParallaxBackground/ParallaxLayer"]
-margin_left = -81.0
-margin_top = -139.0
-margin_right = 2411.0
-margin_bottom = 929.0
-color = Color( 0.172549, 0.117647, 0.0470588, 1 )
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="ParallaxBackground/ParallaxLayer"]
+amount = 200
+lifetime = 4.0
+speed_scale = 0.5
+texture = SubResource( 11 )
+emission_shape = 2
+emission_rect_extents = Vector2( 1340, 800 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 50.0
+initial_velocity_random = 1.0
+scale_amount = 4.0
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 12 )
+color = Color( 1, 1, 1, 0.0392157 )
+color_ramp = SubResource( 13 )
 
-[node name="Wall" parent="ParallaxBackground/ParallaxLayer" instance=ExtResource( 1 )]
-collision_layer = 16
-collision_mask = 15
+[node name="Background" parent="ParallaxBackground/ParallaxLayer" instance=ExtResource( 1 )]
 
 [node name="MobileControlls" parent="." instance=ExtResource( 3 )]
 
@@ -56,7 +86,7 @@ script = ExtResource( 12 )
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Player" parent="YSort" instance=ExtResource( 4 )]
-position = Vector2( 1608, 446 )
+position = Vector2( 756, 188 )
 collision_mask = 17
 
 [node name="EnemyGun" parent="YSort" instance=ExtResource( 7 )]
@@ -100,6 +130,38 @@ limit_left = 0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
-autoplay = true
+
+[node name="Foreground" type="ParallaxBackground" parent="."]
+layer = 1
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Foreground"]
+modulate = Color( 1, 1, 1, 0.0784314 )
+motion_scale = Vector2( 0, 0 )
+
+[node name="Waves" parent="Foreground/ParallaxLayer" instance=ExtResource( 14 )]
+position = Vector2( 4, 0 )
+texture = ExtResource( 15 )
+x_amplitude = 60.0
+
+[node name="Waves2" parent="Foreground/ParallaxLayer" instance=ExtResource( 14 )]
+position = Vector2( 4, 0 )
+rotation = -3.14159
+texture = ExtResource( 15 )
+x_amplitude = 60.0
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Foreground"]
+amount = 200
+lifetime = 4.0
+texture = ExtResource( 17 )
+emission_shape = 2
+emission_rect_extents = Vector2( 1340, 800 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 50.0
+initial_velocity_random = 1.0
+scale_amount = 0.4
+scale_amount_random = 1.0
+scale_amount_curve = SubResource( 9 )
+color_ramp = SubResource( 10 )
 
 [connection signal="area_entered" from="door/Area2D" to="door/Area2D" method="_on_Area2D_area_entered"]

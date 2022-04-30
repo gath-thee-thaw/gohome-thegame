@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Assests/Backgrounds/waves.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Waves.gd" type="Script" id=2]
+
+[sub_resource type="Shader" id=9]
+code = "
+shader_type canvas_item;
+
+uniform float speed = 1.0;
+uniform float waves = 100.0;
+
+float Remap01(float value, float from, float to) {
+	return (value - from) / (to - from);
+}
+
+void fragment() {
+	vec2 uv = UV;
+	uv.y += Remap01(sin(uv.x * waves - (TIME * speed)), -waves, waves) - 0.5;
+
+	vec4 color = texture(TEXTURE, uv);
+
+	COLOR =  color;
+}"
+
+[sub_resource type="ShaderMaterial" id=10]
+shader = SubResource( 9 )
+shader_param/speed = 1.0
+shader_param/waves = 20.0
+
+[node name="Waves" type="Sprite"]
+material = SubResource( 10 )
+position = Vector2( 672, 424 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
