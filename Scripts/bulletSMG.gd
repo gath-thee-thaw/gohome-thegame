@@ -9,6 +9,8 @@ var pos
 var curent_pos
 var old_pos
 
+var impact_particles = load("res://scenes/Bullets/BulletImpactParticles.tscn")
+
 func _ready():
 	$AnimatedSprite.play("default")
 	var val = rand_range(-recoil, recoil)
@@ -34,14 +36,16 @@ func _process(delta):
 		   Global.frame_freeze(0.05, 0.4)
 		   result.collider.damage(1, position)
 		if result.collider != self:
-			queue_free()
+			destroy()
 
-	
 	old_pos = curent_pos
-	
-
-
-
 
 func _on_Timer_timeout():
+	destroy()
+
+func destroy():
+	var ip = impact_particles.instance()
+	get_parent().add_child(ip)
+	ip.global_position = global_position
+	ip.emitting = true
 	queue_free()
