@@ -72,5 +72,6 @@ anims/RESET = SubResource( 1 )
 anims/start = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 0, 17 )
 scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 1 )

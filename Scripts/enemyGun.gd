@@ -19,10 +19,13 @@ var health = 10
 var dead_animation = load("res://scenes/Enemies/EnemyGunDead.tscn")
 var current_xpos
 
-func _ready():
-	timer = waitSeconds
-
+var rng = RandomNumberGenerator.new()
 var direction1 = null
+
+func _ready():
+	rng.randomize()
+	timer = waitSeconds
+	xStopingDistance = rand_range(100.0,400.0)
 
 
 func _process(delta):

@@ -31,14 +31,14 @@ animations = [ {
 "name": "splash3",
 "speed": 24.0
 }, {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 10 ), null ],
-"loop": false,
-"name": "splash2",
-"speed": 24.0
-}, {
 "frames": [ ExtResource( 1 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), null ],
 "loop": false,
 "name": "splash1",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 10 ), null ],
+"loop": false,
+"name": "splash2",
 "speed": 24.0
 } ]
 

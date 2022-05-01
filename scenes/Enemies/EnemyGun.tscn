@@ -189,7 +189,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="EnemyGun" type="Area2D" groups=["enemy"]]
+[node name="EnemyGun" type="Area2D" groups=["enemy", "enemyGun"]]
 material = SubResource( 15 )
 collision_layer = 4
 collision_mask = 3
