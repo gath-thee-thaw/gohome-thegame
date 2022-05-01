@@ -6,6 +6,7 @@ var _sprites := {Vector2.RIGHT: 1, Vector2.LEFT: 2, Vector2.UP: 3, Vector2.DOWN:
 var _velocity := Vector2.ZERO
 var flip
 var direction
+var mobile_move_vector = Vector2(0,0)
 
 var time = 0
 var screen_size
@@ -21,6 +22,7 @@ func _ready():
 
 func _physics_process(delta: float):
 	time +=delta
+	print(direction)
 	#Get inputs
 	if(!Global.mobile):
 		direction = Vector2(
@@ -29,6 +31,7 @@ func _physics_process(delta: float):
 		)
 	else:
 		direction = $CanvasLayer/joyStick.getVelo()
+		direction = mobile_move_vector
    
 	#flip
 	if(Input.get_action_strength("right") or direction.x > 0):
@@ -88,3 +91,7 @@ func bullet_hit(pos, dir):
 			bp.set_scale(Vector2(-1,1))
 			knockback = abs(knockback)
 	bp.global_position = pos
+
+
+func _on_MobileJoystick_use_move_vector(move_vector):
+	mobile_move_vector = move_vector
