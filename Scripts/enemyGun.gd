@@ -6,7 +6,7 @@ var isknockback = false
 var speed = 200
 var kSpeed = 200
 onready var player = get_parent().find_node("Player")
-var bullet = load("res://scenes/Bullets/bulletEnemy.tscn")
+var bullet = load("res://Scenes/Bullets/bulletEnemy.tscn")
 var stopingDistance = 20
 var xStopingDistance = 200
 
@@ -16,7 +16,7 @@ export var waitSeconds = 0.4
 
 var health = 10
 
-var dead_animation = load("res://scenes/Enemies/EnemyGunDead.tscn")
+var dead_animation = load("res://Scenes/Enemies/EnemyGunDead.tscn")
 var current_xpos
 
 var rng = RandomNumberGenerator.new()

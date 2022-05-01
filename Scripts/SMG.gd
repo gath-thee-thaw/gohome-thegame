@@ -1,6 +1,6 @@
 extends Node2D
 
-var bullet = load("res://scenes/Bullets/bulletSMG.tscn")
+var bullet = load("res://Scenes/Bullets/bulletSMG.tscn")
 var shootDelay = .1
 var timer = 0
 

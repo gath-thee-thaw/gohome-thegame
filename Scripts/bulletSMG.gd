@@ -9,7 +9,7 @@ var pos
 var curent_pos
 var old_pos
 
-var impact_particles = load("res://scenes/Bullets/BulletImpactParticles.tscn")
+var impact_particles = load("res://Scenes/Bullets/BulletImpactParticles.tscn")
 
 func _ready():
 	$AnimatedSprite.play("default")

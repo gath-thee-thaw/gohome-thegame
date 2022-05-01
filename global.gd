@@ -1,8 +1,8 @@
 extends Node
 
 var isMobile = false
-var shadow = load("res://scenes/Shadow.tscn")
-onready var blood_splash = load("res://scenes/Blood/blood_splash.tscn")
+var shadow = load("res://Scenes/Shadow.tscn")
+onready var blood_splash = load("res://Scenes/Blood/blood_splash.tscn")
 var camera
 var player
 var camera_follow
@@ -11,7 +11,7 @@ var enemies = 225
 var enemyHud
 var mobile = false
 
-var blood_big = load("res://scenes/Blood/BloodBig.tscn")
+var blood_big = load("res://Scenes/Blood/BloodBig.tscn")
 var random_pos = Vector2(0,0)
 
 var rng = RandomNumberGenerator.new()

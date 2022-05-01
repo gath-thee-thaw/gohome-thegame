@@ -17,7 +17,7 @@ var isknockback = false
 var current_xpos
 export var knockback = 50
 
-var dead_animation = load("res://scenes/Enemies/EnemyRunDead.tscn")
+var dead_animation = load("res://Scenes/Enemies/EnemyRunDead.tscn")
 
 func _ready():
 	setDestination()
