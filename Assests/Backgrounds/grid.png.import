@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/water_normal.png-8549136ab5eaa3cc01bc8194ffde6420.stex"
+path="res://.import/grid.png-1f89619498954ae096f2c8942ba83106.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assests/Backgrounds/water_normal.png"
-dest_files=[ "res://.import/water_normal.png-8549136ab5eaa3cc01bc8194ffde6420.stex" ]
+source_file="res://Assests/Backgrounds/grid.png"
+dest_files=[ "res://.import/grid.png-1f89619498954ae096f2c8942ba83106.stex" ]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
-flags/repeat=0
+flags/repeat=1
 flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false

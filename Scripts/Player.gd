@@ -29,7 +29,7 @@ func _physics_process(delta: float):
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 		)
 	else:
-		direction = $CanvasLayer/joyStick.getVelo()
+		#direction = $CanvasLayer/joyStick.getVelo()
 		direction = mobile_move_vector
    
 	#flip

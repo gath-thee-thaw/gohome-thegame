@@ -20,6 +20,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0.235294 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("../AnimatedSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
 
 [sub_resource type="Animation" id=2]
 resource_name = "dead"
@@ -91,13 +103,13 @@ anims/dead = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.235294 )
-position = Vector2( -29, 16 )
-scale = Vector2( 0.487, 0.4 )
+position = Vector2( -29, 24 )
+scale = Vector2( 0.646667, 0.486667 )
 texture = ExtResource( 8 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 1, -42 )
-scale = Vector2( 0.6, 0.6 )
+position = Vector2( 6, -56 )
+scale = Vector2( 0.8, 0.8 )
 frames = SubResource( 1 )
 animation = "dead"
 frame = 2

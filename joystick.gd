@@ -9,8 +9,9 @@ var touched = false
 
 func _input(event):
 	if event is InputEventScreenTouch:
+		print("touched")
 		var distance = event.position.distance_to(bigCircle.global_position)
-		if not touched:
+		if touched:
 			if distance < maxDistance:
 				touched = true
 		else:

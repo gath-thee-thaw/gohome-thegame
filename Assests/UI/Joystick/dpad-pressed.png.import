@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/bg.jpg-4f972bb7f82fa1fa407f66bcc8036d69.stex"
+path="res://.import/dpad-pressed.png-4f3708dc20d4fba05af67be856e2d0ad.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assests/Backgrounds/bg.jpg"
-dest_files=[ "res://.import/bg.jpg-4f972bb7f82fa1fa407f66bcc8036d69.stex" ]
+source_file="res://Assests/UI/Joystick/dpad-pressed.png"
+dest_files=[ "res://.import/dpad-pressed.png-4f3708dc20d4fba05af67be856e2d0ad.stex" ]
 
 [params]
 

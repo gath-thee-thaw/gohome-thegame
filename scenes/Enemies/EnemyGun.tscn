@@ -156,7 +156,7 @@ tracks/3/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 20.25, 19.5 )
+extents = Vector2( 34.25, 31 )
 
 [sub_resource type="Animation" id=16]
 resource_name = "Hit"
@@ -250,7 +250,7 @@ __meta__ = {
 
 [node name="Sprites" type="Node2D" parent="."]
 use_parent_material = true
-position = Vector2( 0, -40 )
+position = Vector2( 0, -68 )
 
 [node name="Legs" type="AnimatedSprite" parent="Sprites"]
 use_parent_material = true
@@ -267,7 +267,7 @@ anims/RESET = SubResource( 13 )
 anims/Run = SubResource( 5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.25, -13.5 )
+position = Vector2( 0, -35 )
 shape = SubResource( 6 )
 
 [node name="ImpactAnimationPlayer" type="AnimationPlayer" parent="."]

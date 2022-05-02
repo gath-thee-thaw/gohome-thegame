@@ -19,6 +19,10 @@ config/icon="res://icon.png"
 Utils="*res://Scripts/utils.gd"
 Global="*res://global.gd"
 
+[debug]
+
+settings/fps/force_fps=60
+
 [display]
 
 window/size/width=1920

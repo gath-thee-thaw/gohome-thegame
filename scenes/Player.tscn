@@ -1,6 +1,6 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://Scenes/joystick.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assests/noise.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Guns/SMG.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=3]
 [ext_resource path="res://icon.png" type="Texture" id=4]
@@ -8,7 +8,6 @@
 [ext_resource path="res://Assests/Player/player-body_2.png" type="Texture" id=6]
 [ext_resource path="res://Assests/Shaders/Flash.gdshader" type="Shader" id=7]
 [ext_resource path="res://Assests/Audio/FOOTSTEPS (A) Walking Loop 01.ogg" type="AudioStream" id=8]
-[ext_resource path="res://Assests/noise-2.jpg" type="Texture" id=9]
 [ext_resource path="res://Scenes/MobileJoystick.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ShaderMaterial" id=14]
@@ -214,17 +213,11 @@ speed = 250
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 100
 
-[node name="joyStick" parent="CanvasLayer" instance=ExtResource( 1 )]
-visible = false
-position = Vector2( 182, 438 )
-collision_layer = 8
-collision_mask = 8
-
 [node name="Noise" type="TextureRect" parent="CanvasLayer"]
 material = SubResource( 9 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 9 )
+texture = ExtResource( 1 )
 expand = true
 stretch_mode = 2
 

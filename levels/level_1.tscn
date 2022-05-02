@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Scenes/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Bullets/bulletEnemy.tscn" type="PackedScene" id=2]
@@ -13,7 +13,6 @@
 [ext_resource path="res://Scripts/enemies.gd" type="Script" id=12]
 [ext_resource path="res://Scenes/CameraFollow.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Scenes/Waves.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Assests/Backgrounds/Foreground/bg-overlay.png" type="Texture" id=15]
 [ext_resource path="res://Scenes/Camera2D.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Assests/sphere50x50.png" type="Texture" id=17]
 
@@ -163,8 +162,9 @@ stream = ExtResource( 6 )
 layer = 1
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Foreground"]
-modulate = Color( 0.784314, 0.92549, 0.811765, 0.219608 )
 motion_scale = Vector2( 0, 1 )
+
+[node name="Waves" parent="Foreground/ParallaxLayer" instance=ExtResource( 14 )]
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Foreground/ParallaxLayer"]
 position = Vector2( -215, 558 )
@@ -183,16 +183,5 @@ scale_amount_random = 1.0
 scale_amount_curve = SubResource( 9 )
 color = Color( 0.784314, 0.92549, 0.811765, 1 )
 color_ramp = SubResource( 10 )
-
-[node name="Waves" parent="Foreground/ParallaxLayer" instance=ExtResource( 14 )]
-position = Vector2( -1160, -407 )
-texture = ExtResource( 15 )
-x_amplitude = 60.0
-
-[node name="Waves2" parent="Foreground/ParallaxLayer" instance=ExtResource( 14 )]
-position = Vector2( 904, 1657 )
-rotation = -3.14159
-texture = ExtResource( 15 )
-x_amplitude = 60.0
 
 [connection signal="area_entered" from="door/Area2D" to="door/Area2D" method="_on_Area2D_area_entered"]

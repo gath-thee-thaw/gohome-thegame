@@ -8,6 +8,7 @@ extents = Vector2( 100, 100 )
 [node name="ShootButton" type="CanvasLayer"]
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
-position = Vector2( 1102, 524 )
+position = Vector2( 1636, 834 )
 normal = ExtResource( 1 )
 shape = SubResource( 1 )
+action = "shoot"
