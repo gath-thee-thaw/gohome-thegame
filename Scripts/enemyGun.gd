@@ -100,7 +100,7 @@ func damage(var num, var pos):
 	if(health <= 0):
 		var da = dead_animation.instance()
 		get_parent().add_child(da)
-		da.global_position = global_position - Vector2(0,-20)
+		da.global_position = global_position - Vector2(0,-30)
 		if flip:
 			da.set_scale(Vector2(-1,1))
 		else:

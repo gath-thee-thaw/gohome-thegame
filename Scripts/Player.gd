@@ -22,7 +22,6 @@ func _ready():
 
 func _physics_process(delta: float):
 	time +=delta
-	print(direction)
 	#Get inputs
 	if(!Global.mobile):
 		direction = Vector2(

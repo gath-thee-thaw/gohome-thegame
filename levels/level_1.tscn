@@ -68,7 +68,6 @@ offsets = PoolRealArray( 0, 0.75, 1 )
 colors = PoolColorArray( 0.784314, 0.92549, 0.811765, 1, 1, 1, 1, 0, 0, 0, 0, 0 )
 
 [node name="level_1" type="Node2D"]
-position = Vector2( 1, 0 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -108,8 +107,8 @@ script = ExtResource( 12 )
 
 [node name="Vingatte" type="ColorRect" parent="Hud"]
 material = SubResource( 15 )
-margin_right = 1280.0
-margin_bottom = 720.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 
 [node name="YSort" type="YSort" parent="."]
 
@@ -155,6 +154,7 @@ shape = SubResource( 7 )
 [node name="Camera2D" parent="CameraFollow" instance=ExtResource( 16 )]
 current = true
 limit_left = 0
+limit_top = -2000
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
@@ -164,22 +164,13 @@ layer = 1
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Foreground"]
 modulate = Color( 0.784314, 0.92549, 0.811765, 0.219608 )
-motion_scale = Vector2( 0, 0 )
+motion_scale = Vector2( 0, 1 )
 
-[node name="Waves" parent="Foreground/ParallaxLayer" instance=ExtResource( 14 )]
-position = Vector2( 4, 0 )
-texture = ExtResource( 15 )
-x_amplitude = 60.0
-
-[node name="Waves2" parent="Foreground/ParallaxLayer" instance=ExtResource( 14 )]
-position = Vector2( 4, 0 )
-rotation = -3.14159
-texture = ExtResource( 15 )
-x_amplitude = 60.0
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Foreground"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Foreground/ParallaxLayer"]
+position = Vector2( -215, 558 )
 amount = 200
 lifetime = 4.0
+local_coords = false
 texture = ExtResource( 17 )
 emission_shape = 2
 emission_rect_extents = Vector2( 1340, 800 )
@@ -192,5 +183,16 @@ scale_amount_random = 1.0
 scale_amount_curve = SubResource( 9 )
 color = Color( 0.784314, 0.92549, 0.811765, 1 )
 color_ramp = SubResource( 10 )
+
+[node name="Waves" parent="Foreground/ParallaxLayer" instance=ExtResource( 14 )]
+position = Vector2( -1160, -407 )
+texture = ExtResource( 15 )
+x_amplitude = 60.0
+
+[node name="Waves2" parent="Foreground/ParallaxLayer" instance=ExtResource( 14 )]
+position = Vector2( 904, 1657 )
+rotation = -3.14159
+texture = ExtResource( 15 )
+x_amplitude = 60.0
 
 [connection signal="area_entered" from="door/Area2D" to="door/Area2D" method="_on_Area2D_area_entered"]

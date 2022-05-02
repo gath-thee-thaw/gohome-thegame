@@ -94,14 +94,12 @@ anims/dead = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 1, 1, 1, 0.235294 )
-position = Vector2( -43, 0 )
-scale = Vector2( 0.665, 0.4 )
+position = Vector2( -62, 9 )
+scale = Vector2( 1.09333, 0.506667 )
 texture = ExtResource( 8 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 0, -64 )
-scale = Vector2( 0.4, 0.4 )
+position = Vector2( 0, -98 )
+scale = Vector2( 0.6, 0.6 )
 frames = SubResource( 1 )
 animation = "dead"
-frame = 5
-playing = true

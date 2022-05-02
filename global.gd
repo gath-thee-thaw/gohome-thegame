@@ -9,15 +9,15 @@ var camera_follow
 
 var enemies = 225
 var enemyHud
-var mobile = true
+var mobile = false
 
 var blood_big = load("res://Scenes/Blood/BloodBig.tscn")
 var random_pos = Vector2(0,0)
 
 var rng = RandomNumberGenerator.new()
 
+
 func _ready():
-	
 	if get_tree().current_scene.name != "Main_menu":
 		camera = Utils.get_main_node().get_node("CameraFollow").get_node("Camera2D")
 		camera_follow = Utils.get_main_node().get_node("CameraFollow")
@@ -45,7 +45,7 @@ func set_enemyNumber():
 func add_blood_big(node, no_of_splashes):
 	while no_of_splashes > 0:
 		if node.is_in_group("enemyGun"):
-			random_pos = Vector2(rand_range(-20,20),10)
+			random_pos = Vector2(rand_range(-70,10),20)
 		if node.is_in_group("enemyRun"):
 			random_pos = Vector2(rand_range(-20,20),0)
 		rng.randomize()

@@ -9,8 +9,9 @@ var currentx_pos = Vector2(0,0)
 
 func _ready():
 	$Timer.set_wait_time(cooldown)
-	global_position.y = 360
-	
+	var screen_size = get_viewport_rect().size.y
+	global_position.y = screen_size/2
+	print(screen_size)
 	
 func _process(_delta):
 

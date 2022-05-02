@@ -51,7 +51,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, -40 ) ]
+"values": [ Vector2( 0, -68 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprites:rotation_degrees")
@@ -116,7 +116,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.3, 0.6 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, -40 ), Vector2( 0, -50 ), Vector2( 0, -40 ) ]
+"values": [ Vector2( 0, -68 ), Vector2( 0, -78 ), Vector2( 0, -68 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Sprites:rotation_degrees")
@@ -200,12 +200,12 @@ use_parent_material = true
 position = Vector2( 0, -40 )
 
 [node name="spawnPoint" type="Node2D" parent="gun"]
-position = Vector2( 30, 13 )
+position = Vector2( 51, -3 )
 
 [node name="gunSparksParticles" type="CPUParticles2D" parent="gun"]
 material = SubResource( 4 )
 use_parent_material = true
-position = Vector2( 36, 17 )
+position = Vector2( 46, -3 )
 emitting = false
 amount = 10
 lifetime = 0.8
@@ -227,7 +227,7 @@ __meta__ = {
 }
 
 [node name="gunSound" type="AudioStreamPlayer2D" parent="gun"]
-position = Vector2( 0, 40 )
+position = Vector2( 42, -3 )
 stream = ExtResource( 6 )
 
 [node name="walkParticles" type="CPUParticles2D" parent="."]
@@ -254,12 +254,12 @@ position = Vector2( 0, -40 )
 
 [node name="Legs" type="AnimatedSprite" parent="Sprites"]
 use_parent_material = true
-scale = Vector2( 0.4, 0.4 )
+scale = Vector2( 0.6, 0.6 )
 frames = SubResource( 7 )
 
 [node name="Body" type="Sprite" parent="Sprites"]
 use_parent_material = true
-scale = Vector2( 0.4, 0.4 )
+scale = Vector2( 0.6, 0.6 )
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

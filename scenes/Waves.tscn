@@ -30,6 +30,6 @@ shader_param/waves = 20.0
 
 [node name="Waves" type="Sprite"]
 material = SubResource( 10 )
-position = Vector2( 672, 424 )
 texture = ExtResource( 1 )
+centered = false
 script = ExtResource( 2 )

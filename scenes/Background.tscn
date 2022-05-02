@@ -69,18 +69,16 @@ shader_param/texture_offset_uv = ExtResource( 4 )
 [node name="Background" type="Node2D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -32.0
-margin_top = -24.0
-margin_right = 1308.0
-margin_bottom = 776.0
+margin_left = -40.0
+margin_top = -40.0
+margin_right = 1960.0
+margin_bottom = 1120.0
 color = Color( 0.662745, 0.839216, 0.788235, 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 0.945098, 0.976471, 0.956863, 0.0627451 )
 material = SubResource( 10 )
-position = Vector2( 634.5, 360.5 )
-scale = Vector2( 5.22266, 3.12109 )
+position = Vector2( 960, 540 )
+scale = Vector2( 8, 5 )
 texture = ExtResource( 3 )
 normal_map = ExtResource( 2 )

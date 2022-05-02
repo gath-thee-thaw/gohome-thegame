@@ -47,7 +47,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 23, 22.25 )
+extents = Vector2( 36, 29.875 )
 
 [sub_resource type="StreamTexture" id=11]
 flags = 4
@@ -234,11 +234,13 @@ position = Vector2( 0, -40 )
 
 [node name="Body" type="AnimatedSprite" parent="Sprites"]
 use_parent_material = true
-scale = Vector2( 0.4, 0.4 )
+position = Vector2( 0, -20 )
+scale = Vector2( 0.6, 0.6 )
 frames = SubResource( 2 )
 
 [node name="Hands" type="Node2D" parent="Sprites"]
 use_parent_material = true
+position = Vector2( 0, -20 )
 
 [node name="SMG" parent="Sprites/Hands" instance=ExtResource( 2 )]
 
@@ -251,10 +253,11 @@ scale = Vector2( 0.777937, -0.200837 )
 texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -18.75 )
+position = Vector2( 0, -24 )
 shape = SubResource( 1 )
 
 [node name="walkParticles" type="CPUParticles2D" parent="."]
+position = Vector2( 0, -5 )
 z_index = -1
 emitting = false
 amount = 40
