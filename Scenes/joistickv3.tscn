@@ -1,0 +1,20 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assests/UI/Joystick/transparentLight05.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/joistickv3.gd" type="Script" id=2]
+[ext_resource path="res://Assests/UI/Joystick/dpad-normal.png" type="Texture" id=3]
+[ext_resource path="res://Assests/UI/Joystick/dpad-pressed.png" type="Texture" id=4]
+[ext_resource path="res://Scripts/joi.gd" type="Script" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+
+[node name="joi" type="Sprite"]
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 3 )
+pressed = ExtResource( 4 )
+shape = SubResource( 1 )
+script = ExtResource( 5 )

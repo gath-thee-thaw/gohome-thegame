@@ -6,11 +6,13 @@ var move_vector = Vector2(0,0)
 var joystick_active = false
 
 onready var maxDistance = $BigCircle.shape.radius
+onready var smallR = $SmallCircle.shape.radius
 onready var smallCircle = $SmallCircle
 onready var bigCircle = $BigCircle
 
 onready var smallcircle_initpos
 
+var radius = Vector2(smallR, smallR)
 
 func _ready():
 	smallcircle_initpos = smallCircle.position
@@ -20,7 +22,7 @@ func _input(event):
 		if bigCircle.is_pressed():
 			move_vector = calculate_move_vector(event.position)
 			joystick_active = true
-			smallCircle.position = event.position
+			smallCircle.position = event.position - radius
 			#smallCircle.position = bigCircle.position + (smallCircle.position - bigCircle.position).clamped(maxDistance)
 	
 	if event is InputEventScreenTouch:
