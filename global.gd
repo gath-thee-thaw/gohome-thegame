@@ -9,7 +9,7 @@ var camera_follow
 
 var enemies = 225
 var enemyHud
-var mobile = true
+var mobile = false
 
 var blood_big = load("res://Scenes/Blood/BloodBig.tscn")
 var random_pos = Vector2(0,0)

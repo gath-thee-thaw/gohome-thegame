@@ -17,8 +17,8 @@
 [ext_resource path="res://Assests/BloodSplash/3-blood_splash4.png" type="Texture" id=15]
 [ext_resource path="res://Assests/BloodSplash/3-blood_splash5.png" type="Texture" id=16]
 [ext_resource path="res://addons/randomAudioStreamPlayer/random_audio_stream_player_2D.gd" type="Script" id=17]
-[ext_resource path="res://Assests/Audio/BloodSplashSounds/PUNCH_SQUELCH_HEAVY_01.wav" type="AudioStream" id=18]
-[ext_resource path="res://Assests/Audio/BloodSplashSounds/PUNCH_SQUELCH_HEAVY_05.wav" type="AudioStream" id=19]
+[ext_resource path="res://Assests/Audio/PUNCH_SQUELCH_HEAVY_01.wav" type="AudioStream" id=18]
+[ext_resource path="res://Assests/Audio/PUNCH_SQUELCH_HEAVY_05.wav" type="AudioStream" id=19]
 [ext_resource path="res://Assests/Audio/BloodSplashSounds/PUNCH_DESIGNED_HEAVY_86.wav" type="AudioStream" id=20]
 
 [sub_resource type="Curve" id=1]

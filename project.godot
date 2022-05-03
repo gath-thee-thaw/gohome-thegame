@@ -34,7 +34,7 @@ window/stretch/aspect="keep"
 
 [editor_plugins]
 
-enabled=PoolStringArray(  )
+enabled=PoolStringArray( "res://addons/Trail/plugin.cfg", "res://addons/randomAudioStreamPlayer/plugin.cfg" )
 
 [input]
 
