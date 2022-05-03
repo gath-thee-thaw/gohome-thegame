@@ -273,3 +273,5 @@ shape = SubResource( 6 )
 [node name="ImpactAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Hit = SubResource( 16 )
 anims/RESET = SubResource( 17 )
+
+[connection signal="area_entered" from="." to="." method="_on_EnemyGun_area_entered"]

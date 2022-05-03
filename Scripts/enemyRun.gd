@@ -47,6 +47,7 @@ func damage(var num, pos):
 func _on_enemy2_area_entered(area):
 	if area.is_in_group("Player"):
 		canFollow = false
+	
 
 func _on_enemy2_area_exited(area):
 	if area.is_in_group("Player"):

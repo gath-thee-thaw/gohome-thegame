@@ -85,7 +85,7 @@ func bullet_hit(pos, dir):
 		if flip:
 			bp.set_scale(Vector2(1,1))
 			knockback = abs(knockback)
-			print("lol")
+			
 		else:
 			bp.set_scale(Vector2(-1,1))
 			knockback = abs(knockback)
