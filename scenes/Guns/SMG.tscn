@@ -1,9 +1,8 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/SMG.gd" type="Script" id=1]
 [ext_resource path="res://Assests/Player/player-hand_SMG.png" type="Texture" id=2]
 [ext_resource path="res://Assests/Audio/LASRGun_Plasma Rifle Bullet Stream_02.wav" type="AudioStream" id=3]
-[ext_resource path="res://Scenes/ShootButton.tscn" type="PackedScene" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -188,12 +187,7 @@ scale_amount_random = 1.0
 color = Color( 0.996078, 1, 0.423529, 1 )
 color_ramp = SubResource( 14 )
 
-[node name="ShootButton" parent="." instance=ExtResource( 4 )]
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.4
 
-[connection signal="pressed" from="ShootButton/TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
-
-[editable path="ShootButton"]
