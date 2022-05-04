@@ -16,11 +16,20 @@ var isknockback = false
 var current_xpos
 
 
+
 func _ready():
 	screen_size = Vector2(3000,720)
+	
+	
+	
 
 
 func _physics_process(delta: float):
+	if isknockback:
+		global_position.x = lerp(global_position.x, current_xpos + knockback, 0.6)
+		isknockback = false
+	
+		
 	time +=delta
 	#Get inputs
 	if(!Global.mobile):
@@ -29,9 +38,9 @@ func _physics_process(delta: float):
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 		)
 	else:
-		#direction = $CanvasLayer/joyStick.getVelo()
-		direction = mobile_move_vector
-   
+		direction = $CanvasLayer2/joi/TouchScreenButton.get_value()
+	
+	
 	#flip
 	if(Input.get_action_strength("right") or direction.x > 0):
 		if(flip):
@@ -56,10 +65,6 @@ func _physics_process(delta: float):
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
 	
-	if isknockback:
-		global_position.x = lerp(global_position.x, current_xpos + knockback, 0.6)
-		isknockback = false
-		
 		
 func shoot():
 	print("dsafhasdfhkgasdgkj")

@@ -190,6 +190,10 @@ color_ramp = SubResource( 14 )
 
 [node name="ShootButton" parent="." instance=ExtResource( 4 )]
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.4
+
 [connection signal="pressed" from="ShootButton/TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 
 [editable path="ShootButton"]

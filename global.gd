@@ -11,6 +11,9 @@ var enemies = 225
 var enemyHud
 var mobile = false
 
+var canShoot = true
+var canMeele = false
+
 var blood_big = load("res://Scenes/Blood/BloodBig.tscn")
 var random_pos = Vector2(0,0)
 

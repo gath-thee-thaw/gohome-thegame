@@ -35,7 +35,7 @@ func _process(delta):
 		if result.collider.is_in_group("enemy"):
 		   Global.frame_freeze(0.05, 0.4)
 		   result.collider.damage(1, position)
-		if result.collider != self:
+		if result.collider != self and !result.collider.is_in_group("bulDont"):
 			destroy()
 
 	old_pos = curent_pos

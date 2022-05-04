@@ -1,6 +1,7 @@
 extends Area2D
 
 onready var player = Global.player
+
 var kSpeed = 200
 var speed = 1000
 var stopingDistance = 50
@@ -11,6 +12,7 @@ var health = 5
 var rng = RandomNumberGenerator.new()
 
 func _process(delta):
+
 	var direction = Vector2(
 	player.position - position)
 

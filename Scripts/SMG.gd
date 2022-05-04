@@ -4,9 +4,22 @@ var bullet = load("res://Scenes/Bullets/bulletSMG.tscn")
 var shootDelay = .1
 var timer = 0
 
+var isTimerOn = false
 
 func _process(delta):
+	if Global.canShoot == false:
+		visible = false
+		if !isTimerOn:
+			$Timer.start()
+			isTimerOn = true
+		
+		return
+	
 	if Input.is_action_pressed("shoot"):
+		Global.canMeele = false
+		visible = true
+		
+		
 		if timer <= 0:
 			Shoot()
 			timer = shootDelay
@@ -33,3 +46,8 @@ func _on_TouchScreenButton_pressed():
 	if timer <= 0:
 		Shoot()
 		timer = shootDelay
+
+
+func _on_Timer_timeout():
+	Global.canShoot = true
+	isTimerOn = false
