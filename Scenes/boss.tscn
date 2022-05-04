@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/boss.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+[node name="Boss" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -13.0
+margin_top = -20.0
+margin_right = 13.0
+margin_bottom = 20.0
+color = Color( 0.380392, 0.160784, 0.160784, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpawnPoints" type="Node2D" parent="."]
+
+[node name="SpawnPoint1" type="Node2D" parent="SpawnPoints"]
+position = Vector2( -38, 46 )
+
+[node name="SpawnPoint2" type="Node2D" parent="SpawnPoints"]
+position = Vector2( -55, -17 )
+
+[node name="SpawnPoint4" type="Node2D" parent="SpawnPoints"]
+position = Vector2( 55, -17 )
+
+[node name="SpawnPoint3" type="Node2D" parent="SpawnPoints"]
+position = Vector2( 0, -53 )
+
+[node name="SpawnPoint5" type="Node2D" parent="SpawnPoints"]
+position = Vector2( 38, 46 )
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[node name="TeleportTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
+[connection signal="timeout" from="TeleportTimer" to="." method="_on_TeleportTimer_timeout"]

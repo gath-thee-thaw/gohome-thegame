@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Bullets/bulletEnemy.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Scripts/levelSelect.gd" type="Script" id=13]
 [ext_resource path="res://Scripts/enemies.gd" type="Script" id=14]
 [ext_resource path="res://icon.png" type="Texture" id=15]
+[ext_resource path="res://Scenes/boss.tscn" type="PackedScene" id=16]
 
 [sub_resource type="StreamTexture" id=11]
 flags = 4
@@ -133,6 +134,10 @@ position = Vector2( 93, 254 )
 position = Vector2( 335, 148 )
 
 [node name="bulletEnenmy" parent="YSort" instance=ExtResource( 2 )]
+
+[node name="Boss" parent="YSort" instance=ExtResource( 16 )]
+position = Vector2( 505, 311 )
+scale = Vector2( 3, 3 )
 
 [node name="door" type="Sprite" parent="."]
 visible = false

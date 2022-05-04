@@ -13,3 +13,4 @@ normal = ExtResource( 1 )
 action = "shoot"
 
 [node name="joi" parent="." instance=ExtResource( 2 )]
+position = Vector2( 219, 875 )
