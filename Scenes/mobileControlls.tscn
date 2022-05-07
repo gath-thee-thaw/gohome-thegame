@@ -11,5 +11,12 @@ scale = Vector2( 0.4375, 0.4375 )
 normal = ExtResource( 1 )
 action = "shoot"
 
+[node name="meeleButton2" type="TouchScreenButton" parent="."]
+position = Vector2( 1668, 708 )
+scale = Vector2( 0.4375, 0.4375 )
+normal = ExtResource( 1 )
+action = "meele"
+
 [node name="joi" parent="." instance=ExtResource( 2 )]
-position = Vector2( 219, 875 )
+position = Vector2( 298, 796 )
+scale = Vector2( 1.9875, 1.9875 )

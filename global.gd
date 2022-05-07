@@ -11,6 +11,7 @@ var enemies = 225
 var enemyHud
 var mobile = false
 
+
 var canShoot = true
 var canMeele = false
 

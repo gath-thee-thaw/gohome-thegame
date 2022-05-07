@@ -19,7 +19,7 @@ func _spawn_enemies():
 	for n in $SpawnPoints.get_child_count():
 		var enemy = enemychase.instance()
 		enemy.position = $SpawnPoints.get_child(n).global_position
-		get_tree().root.add_child(enemy)
+		get_parent().add_child(enemy)
 
 
 func _on_TeleportTimer_timeout():

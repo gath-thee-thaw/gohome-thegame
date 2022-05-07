@@ -4,7 +4,8 @@ onready var player = Global.player
 
 var kSpeed = 200
 var speed = 1000
-var stopingDistance = 50
+var stopingDistance = 200
+var yStoppingDist = -50
 var canFollow = true
 var flip
 
@@ -15,16 +16,35 @@ export var knockback = 50
 var isknockback = false
 var current_xpos
 
-func _process(delta):
+var canAttack = true
+var destination
+var nextEnemy
+var isfollowingEnemy = false
+var randX 
+var randY
+var followingEnemy
 
-	var direction = Vector2(
-	player.position - position)
+func _process(delta):
+	if !is_instance_valid(followingEnemy):
+		var xD = rand_range(stopingDistance, - stopingDistance)
+		var yD = rand_range(yStoppingDist, - yStoppingDist)
+		destination = player.position + Vector2(xD, yD)
+	elif is_instance_valid(followingEnemy):
+		if global_position.x > player.global_position.x:
+			destination = followingEnemy.position + Vector2(randX, randY)
+		else:
+			
+			destination = followingEnemy.position + Vector2(-randX, randY)
+	
+	
+
+	var direction = Vector2(destination - position)
 
 	if direction.length() > 1.0:
 		direction = direction.normalized()
 	position += direction * speed * delta
 	
-	var distamce = position.distance_to(player.position)
+	var distamce = position.distance_to(destination)
 	if distamce <= stopingDistance:
 		speed = 0
 	else:
@@ -60,10 +80,31 @@ func damage(var num, pos):
 		Global.enemies -= 1
 		Global.set_enemyNumber()
 		queue_free()
+		
+		
+		
+		
+		
 
 func _on_enemy2_area_entered(area):
 	if area.is_in_group("Player"):
 		canFollow = false
+	if area.is_in_group("enemyChase") and !is_instance_valid(followingEnemy):
+		
+		var distA = area.global_position.distance_to(player.position)
+		var distB = global_position.distance_to(player.position)
+		
+		if distA >= distB:
+			nextEnemy = area
+		else:
+			if !is_instance_valid(followingEnemy):
+				randX = rand_range(stopingDistance, 10)
+				randY = rand_range(yStoppingDist, - yStoppingDist)
+				followingEnemy = area
+				
+				
+				
+
 	
 
 func _on_enemy2_area_exited(area):
