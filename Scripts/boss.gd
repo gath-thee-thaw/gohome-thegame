@@ -23,6 +23,7 @@ func _spawn_enemies():
 
 
 func _on_TeleportTimer_timeout():
+	return
 	var xRand = rand_range(minteleportRadius, maxteleportRadius)
 	var yRand = rand_range(minteleportRadius, maxteleportRadius)
 	global_position = global_position + Vector2(xRand, yRand)

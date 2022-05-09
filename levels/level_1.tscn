@@ -122,7 +122,7 @@ position = Vector2( 326, 288 )
 [node name="EnemyChase" parent="YSort" instance=ExtResource( 5 )]
 
 [node name="EnemyChase2" parent="YSort" instance=ExtResource( 5 )]
-position = Vector2( 406, 56 )
+position = Vector2( 1740, 545 )
 
 [node name="EnemyRun" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 93, 254 )
@@ -133,7 +133,7 @@ position = Vector2( 335, 148 )
 [node name="bulletEnenmy" parent="YSort" instance=ExtResource( 2 )]
 
 [node name="Boss" parent="YSort" instance=ExtResource( 16 )]
-position = Vector2( 505, 311 )
+position = Vector2( 905, 718 )
 scale = Vector2( 3, 3 )
 
 [node name="door" type="Sprite" parent="."]
