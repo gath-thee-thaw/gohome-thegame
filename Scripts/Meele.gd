@@ -23,7 +23,7 @@ func _process(delta):
 	if Input.is_action_pressed("meele") && ready_for_m2 == false:
 		Global.canShoot = false
 		visible = true
-		
+		Global.camera.shake(100,0.5)
 		$AnimatedSprite.set_frame(1)
 		holding = true
 	elif Input.is_action_just_released("meele"):
@@ -31,9 +31,11 @@ func _process(delta):
 		if ready_for_m2 && $AnimationPlayer.is_playing() == false:
 			$AnimationPlayer.play("Meele2")
 			$Meele2Sound.play()
+			Global.camera.shake(200,0.2)
 		elif $AnimationPlayer.is_playing() == false:
 			$AnimationPlayer.play("Meele1")
 			$Meele1Sound.play()
+			Global.camera.shake(100,0.2)
 		
 func _on_Area2D_area_entered(area):
 	if area.is_in_group("enemy"):

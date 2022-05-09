@@ -15,14 +15,14 @@ export var knockback = 50
 var isknockback = false
 var current_xpos
 
+var fuck = 0
+
 
 
 func _ready():
 	screen_size = Vector2(3000,720)
 	
 	
-	
-
 
 func _physics_process(delta: float):
 	if isknockback:
@@ -81,7 +81,6 @@ func bullet_hit(pos, dir):
 		if flip:
 			bp.set_scale(Vector2(-1,1))
 			knockback = -(abs(knockback))
-			
 		else:
 			bp.set_scale(Vector2(1,1))
 			knockback = -(abs(knockback))
@@ -95,6 +94,7 @@ func bullet_hit(pos, dir):
 			bp.set_scale(Vector2(-1,1))
 			knockback = abs(knockback)
 	bp.global_position = pos
+	print(pos, dir)
 
 
 func _on_MobileJoystick_use_move_vector(move_vector):
